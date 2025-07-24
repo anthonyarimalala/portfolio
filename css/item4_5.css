@@ -22,11 +22,11 @@
     margin-top: 20px;
   }
   
-  .skill-block {
-    border: 2px solid white;
-    border-radius: 10px;
-    padding: 15px;
-    background-color: #1e1e1e; /* facultatif : pour contraste */
-    color: white; /* si fond foncé */
-  }
+.skill-block {
+border: 2px solid white;
+border-radius: 10px;
+padding: 15px;
+background-color: #1e1e1e; /* facultatif : pour contraste */
+color: white; /* si fond foncé */
+}
   
