@@ -14,3 +14,13 @@
     padding: 10px;
 }
 
+.entreprise a {
+    color: rgb(0, 174, 0);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .entreprise a:hover {
+    color: #0a8f55; /* Vert plus foncé ou autre nuance */
+  }
+
