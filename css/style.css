@@ -30,7 +30,7 @@ body {
     grid-column: 3 / 5;
 }
 .item8 {
-    grid-column: 1 / -1;
+    grid-column: 2 / -2;
 }
 .footer {
     grid-column: 1 / -1;
@@ -47,5 +47,8 @@ opacity: 1;
 transform: translateX(0);
 }
 
+html {
+    scroll-behavior: smooth;
+  }
 
 

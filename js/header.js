@@ -28,3 +28,20 @@ window.addEventListener('scroll', function() {
 
     lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // éviter valeurs négatives
   });
+  let timeout;
+
+  function showHeader() {
+    const header = document.querySelector('.header');
+    header.classList.remove('hidden');
+
+    // Réinitialiser le timer
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      header.classList.add('hidden');
+    }, 1500); // 2 secondes
+  }
+
+  // Montrer le header au démarrage
+  window.addEventListener('load', showHeader);
+  window.addEventListener('scroll', showHeader);
+  window.addEventListener('mousemove', showHeader);
