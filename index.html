@@ -4,8 +4,144 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/item2_3.css">
+    <link rel="stylesheet" href="css/item4_5.css">
+    <link rel="stylesheet" href="css/item6_7.css">
+    <link rel="stylesheet" href="css/item8.css">
+    <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
-    <h1>Hello, world</h1>
+    <div class="container">
+        <div class="item header" id="header">
+            <nav class="navbar" id="navbar">
+                <a href="#accueil">Accueil</a>
+                <a href="#projets">Mes projets</a>
+                <a href="#competences">Compétences</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+        <div class="item item2">
+            <img src="assets/img/487200988_4005775036364772_133586769086374502_n.jpg">
+        </div>
+        <div class="item item3">
+            <h2 class="item-name">Johary Anthony Randriarimalala</h2>
+            <h3 class="item-role">Développeur Full Stack</h3>
+            <p class="item-text"></p>
+        </div>
+        <div class="item item4">
+          <h2>
+            Compétences
+          </h2>
+        </div>
+        <div class="item item5">
+          <div>
+            <section id="competences" class="competences-grid">
+              <div class="skill-block">
+                <h3>Langages de programmation</h3>
+                <ul>
+                  <li>Java</li>
+                  <li>Python</li>
+                  <li>PHP</li>
+                  <li>C#</li>
+                </ul>
+              </div>
+          
+              <div class="skill-block">
+                <h3>Frameworks</h3>
+                <ul>
+                  <li>Spring</li>
+                  <li>Laravel</li>
+                  <li>CodeIgniter</li>
+                </ul>
+              </div>
+          
+              <div class="skill-block">
+                <h3>Bases de données</h3>
+                <ul>
+                  <li>PostgreSQL</li>
+                  <li>MySQL</li>
+                  <li>Oracle</li>
+                </ul>
+              </div>
+          
+              <div class="skill-block">
+                <h3>Soft Skills</h3>
+                <ul>
+                  <li> Résolution de problèmes </li>
+                  <li>Adaptabilité & Agilité </li>
+                  <li>Collaboration interdisciplinaire </li>
+                  <li>Collaboration interdisciplinaire </li>
+                </ul>
+              </div>
+            </section>
+          </div>
+          
+        </div>
+        <div class="item item6">
+          <h2>Expériences</h2>
+        </div>
+        <div class="item item7">
+            <section id="experiences">
+                
+                <div>
+                  <h3>HPI Business Partner</h3>
+                  <p><strong>Poste :</strong> Développeur Full Stack</p>
+                  <p><strong>Missions :</strong> Conception, développement et maintenance d'applications web. Participation aux réunions techniques et amélioration continue du produit.</p>
+                </div>
+              
+                <div>
+                  <h3>EasyTech</h3>
+                  <p><strong>Poste :</strong> Développeur Back-end</p>
+                  <p><strong>Missions :</strong> Développement d'APIs robustes pour applications web et mobiles, intégration de bases de données, et collaboration avec les équipes front-end.</p>
+                </div>
+              
+                <div>
+                  <h3>Projets académiques</h3>
+                  <p><strong>Poste :</strong> Développeur Full Stack / Étudiant</p>
+                  <p><strong>Missions :</strong> Réalisation de projets dans un cadre universitaire : gestion de stock, application médicale, dashboard de suivi, etc. Utilisation des frameworks Laravel, Spring et d'outils comme PostgreSQL ou MySQL.</p>
+                </div>
+              </section>
+        </div>
+        <div class="item item8">
+            <section id="contact">
+                <h2>Contact</h2>
+              
+                <p>Tu peux me contacter via les moyens suivants :</p>
+              
+                <ul>
+                  <li><strong>Email :</strong> <a href="mailto:johary@example.com">johary@example.com</a></li>
+                  <li><strong>Téléphone :</strong> +261 34 00 000 00</li>
+                  <li><strong>LinkedIn :</strong> <a href="https://www.linkedin.com/in/johary-anthony" target="_blank">linkedin.com/in/johary-anthony</a></li>
+                  <li><strong>GitHub :</strong> <a href="https://github.com/joharyanthony" target="_blank">github.com/joharyanthony</a></li>
+                </ul>
+              </section>
+        </div>
+        <div class="item footer">
+            <p>&copy; 2025 Johary Anthony Randriarimalala. Tous droits réservés.</p>
+        </div>
+    </div>
 </body>
 </html>
+
+<script src="js/header.js"></script>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      } else {
+        entry.target.classList.remove('visible'); // Pour que ça disparaisse en quittant la vue
+      }
+    });
+  }, {
+    threshold: 0.1 // Pour que l'élément soit considéré visible à 10% dans la vue
+  });
+
+  // Cibler tous les éléments avec la classe .item
+  document.querySelectorAll('.item').forEach(item => {
+    observer.observe(item);
+  });
+</script>

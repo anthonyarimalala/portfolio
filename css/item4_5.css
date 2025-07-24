@@ -1,0 +1,32 @@
+.item4, .item5 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    height: 75vh;
+}
+
+.item4 h2 {
+    color: rgb(0, 174, 0);
+    border: 5px solid rgb(0, 174, 0);
+    font-size: 2.5rem;
+    border-radius: 40px;
+    padding: 10px;
+}
+
+.competences-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 colonnes */
+    gap: 20px; /* espace entre les colonnes et lignes */
+    margin-top: 20px;
+  }
+  
+  .skill-block {
+    border: 2px solid white;
+    border-radius: 10px;
+    padding: 15px;
+    background-color: #1e1e1e; /* facultatif : pour contraste */
+    color: white; /* si fond foncé */
+  }
+  

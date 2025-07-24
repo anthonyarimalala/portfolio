@@ -1,0 +1,42 @@
+.item2,
+.item3 {
+    margin-top: 30px;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Image style */
+.item2 img {
+    width: 100%;
+    max-width: 750px;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Textes */
+.item3 {
+    text-align: center;
+}
+
+.item-name {
+    font-size: 3rem;
+    color:aliceblue;
+    margin: 10px 0 5px;
+}
+
+.item-role {
+    font-size: 1.2rem;
+    color: aliceblue;
+    margin-bottom: 5px;
+}
+
+.item-text {
+    font-style: italic;
+    color: aliceblue;
+}

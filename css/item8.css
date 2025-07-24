@@ -1,0 +1,11 @@
+.item8 h2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: rgb(0, 174, 0);
+    border: 5px solid rgb(0, 174, 0);
+    font-size: 2.5rem;
+    border-radius: 40px;
+    padding: 10px;
+}

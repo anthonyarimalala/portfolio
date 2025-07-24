@@ -1,0 +1,49 @@
+@media (max-width: 768px) {
+    .container {
+      grid-template-columns: 1fr;
+      width: 100%;
+      max-width: 100%;
+    }
+  
+    .item2, .item3, .item4, .item5, .item6, .item7, .item8, .footer {
+      grid-column: 1 / -1;
+    }
+  
+    .item img {
+      width: 100%;
+      height: auto;
+    }
+  
+    nav.navbar {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+    }
+  
+    .item-name, .item-role, .item-text {
+      text-align: center;
+    }
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+      }
+  /* item4_5 */
+      .competences-grid {
+        grid-template-columns: 1fr; /* 1 colonne sur petits écrans */
+      }
+      
+      .item2,
+      .item3,
+      .item4,
+      .item5,
+      .item6,
+      .item7,
+      .item8 {
+          height: auto;
+      }
+
+  }
+
