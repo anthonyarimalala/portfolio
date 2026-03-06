@@ -1,16 +1,63 @@
+import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
+import { ProjectDetailsComponent } from '../project-details/project-details.component';
 
 @Component({
   selector: 'app-projects',
   standalone: true,
+  imports: [CommonModule, ProjectDetailsComponent],
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.css']
 })
 export class ProjectsComponent implements AfterViewInit, OnDestroy {
-
-
   @ViewChild('carousel', { static: true }) carouselRef!: ElementRef<HTMLElement>;
   @ViewChild('track', { static: true }) trackRef!: ElementRef<HTMLElement>;
+
+  readonly projects = [
+    {
+      title: 'Application web de gestion de centre commercial',
+      description: "Application web dédiée à la gestion d'un centre commercial.",
+      details: 'Suivi des boutiques, facturation, reporting des performances et supervision des accès.',
+      badge: 'Web',
+      mediaClass: '',
+      tags: ['Web', 'Gestion', 'Académique'],
+      images: ['/projects/centre-1.svg', '/projects/centre-2.svg']
+    },
+    {
+      title: 'API REST sécurisée',
+      description: "Développement d'une API REST sécurisée avec Node.js, Express.js et MongoDB.",
+      details: 'Authentification JWT, validation des requêtes, gestion des rôles et documentation des endpoints.',
+      badge: 'API',
+      mediaClass: 'alt',
+      tags: ['Node.js', 'Express.js', 'MongoDB'],
+      images: ['/projects/api-1.svg', '/projects/api-2.svg']
+    },
+    {
+      title: 'Jeu 2D en local',
+      description: 'Jeu 2D développé en Java pour un usage local.',
+      details: 'Moteur de collisions, gestion des niveaux et sauvegarde locale des scores.',
+      badge: 'Jeu 2D',
+      mediaClass: 'alt-2',
+      tags: ['Java', 'Local', 'Personnel'],
+      images: ['/projects/game-1.svg', '/projects/game-2.svg']
+    },
+    {
+      title: 'Installation & administration Windows & Linux',
+      description: 'Mise en place et administration de systèmes Windows et Linux.',
+      details: 'Installation, sécurisation, scripts de maintenance et supervision des services.',
+      badge: 'Systèmes',
+      mediaClass: '',
+      tags: ['Windows', 'Linux', 'Systèmes'],
+      images: ['/projects/system-1.svg', '/projects/system-2.svg']
+    }
+  ];
+
+  readonly displayedProjects = [...this.projects, ...this.projects].map((project, index) => ({
+    ...project,
+    isClone: index >= this.projects.length
+  }));
+
+  openIndex: number | null = null;
 
   private isDragging = false;
   private startX = 0;
@@ -24,6 +71,13 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
     if (event.button !== 0) {
       return;
     }
+    if (this.openIndex !== null) {
+      return;
+    }
+    const target = event.target as HTMLElement | null;
+    if (target?.closest('button, a, input, textarea, select, [data-no-drag]')) {
+      return;
+    }
     event.preventDefault();
     this.pauseAutoScroll();
     this.isDragging = true;
@@ -35,6 +89,9 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
 
   private readonly onPointerMove = (event: PointerEvent) => {
     if (!this.isDragging) {
+      return;
+    }
+    if (this.openIndex !== null) {
       return;
     }
     const delta = event.clientX - this.startX;
@@ -62,6 +119,9 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
 
   private readonly onWheel = (event: WheelEvent) => {
     if (event.deltaX === 0 && event.deltaY === 0) {
+      return;
+    }
+    if (this.openIndex !== null) {
       return;
     }
     this.pauseAutoScroll();
@@ -112,6 +172,9 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
     if (this.resumeTimer !== null) {
       window.clearTimeout(this.resumeTimer);
     }
+    if (this.openIndex !== null) {
+      return;
+    }
     this.resumeTimer = window.setTimeout(() => {
       this.resumeTimer = null;
       this.resumeAutoScroll();
@@ -119,6 +182,9 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
   }
 
   private resumeAutoScroll(): void {
+    if (this.openIndex !== null) {
+      return;
+    }
     const track = this.trackRef.nativeElement;
     const halfWidth = this.getHalfWidth();
     if (halfWidth === 0) {
@@ -178,5 +244,15 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
       return 35;
     }
     return duration.includes('ms') ? seconds / 1000 : seconds;
+  }
+
+  toggleDetails(index: number): void {
+    if (this.openIndex === index) {
+      this.openIndex = null;
+      this.scheduleAutoScrollResume();
+      return;
+    }
+    this.openIndex = index;
+    this.pauseAutoScroll();
   }
 }

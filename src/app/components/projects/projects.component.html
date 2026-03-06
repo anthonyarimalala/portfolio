@@ -6,116 +6,41 @@
     </div>
     <div class="carousel" aria-label="Carrousel de projets" #carousel>
       <div class="carousel-track" #track>
-        <article class="project-card carousel-item">
-          <div class="project-media">
-            <div class="project-badge">Web</div>
+        <article
+          class="project-card carousel-item"
+          *ngFor="let project of displayedProjects; let i = index"
+          [attr.aria-hidden]="project.isClone ? 'true' : null"
+        >
+          <div class="project-media" [ngClass]="project.mediaClass">
+            <div class="project-badge">{{ project.badge }}</div>
           </div>
           <div class="space-y-3">
-            <h3>Application web de gestion de centre commercial</h3>
-            <p>Application web dédiée à la gestion d'un centre commercial.</p>
+            <h3>{{ project.title }}</h3>
+            <p>{{ project.description }}</p>
             <div class="flex flex-wrap gap-2 text-xs text-white/70">
-              <span class="tag">Web</span>
-              <span class="tag">Gestion</span>
-              <span class="tag">Académique</span>
+              <span class="tag" *ngFor="let tag of project.tags">{{ tag }}</span>
             </div>
           </div>
-        </article>
-        <article class="project-card carousel-item">
-          <div class="project-media alt">
-            <div class="project-badge">API</div>
+          <div class="project-actions">
+            <button
+              type="button"
+              class="details-button"
+              (click)="toggleDetails(i)"
+              [attr.aria-expanded]="openIndex === i"
+              [attr.aria-controls]="'project-details-' + i"
+            >
+              {{ openIndex === i ? 'Fermer' : 'Voir les détails' }}
+            </button>
           </div>
-          <div class="space-y-3">
-            <h3>API REST sécurisée</h3>
-            <p>Développement d'une API REST sécurisée avec Node.js, Express.js et MongoDB.</p>
-            <div class="flex flex-wrap gap-2 text-xs text-white/70">
-              <span class="tag">Node.js</span>
-              <span class="tag">Express.js</span>
-              <span class="tag">MongoDB</span>
-            </div>
-          </div>
-        </article>
-        <article class="project-card carousel-item">
-          <div class="project-media alt-2">
-            <div class="project-badge">Jeu 2D</div>
-          </div>
-          <div class="space-y-3">
-            <h3>Jeu 2D en local</h3>
-            <p>Jeu 2D développé en Java pour un usage local.</p>
-            <div class="flex flex-wrap gap-2 text-xs text-white/70">
-              <span class="tag">Java</span>
-              <span class="tag">Local</span>
-              <span class="tag">Personnel</span>
-            </div>
-          </div>
-        </article>
-        <article class="project-card carousel-item">
-          <div class="project-media">
-            <div class="project-badge">Systèmes</div>
-          </div>
-          <div class="space-y-3">
-            <h3>Installation &amp; administration Windows &amp; Linux</h3>
-            <p>Mise en place et administration de systèmes Windows et Linux.</p>
-            <div class="flex flex-wrap gap-2 text-xs text-white/70">
-              <span class="tag">Windows</span>
-              <span class="tag">Linux</span>
-              <span class="tag">Systèmes</span>
-            </div>
-          </div>
-        </article>
-        <article class="project-card carousel-item" aria-hidden="true">
-          <div class="project-media">
-            <div class="project-badge">Web</div>
-          </div>
-          <div class="space-y-3">
-            <h3>Application web de gestion de centre commercial</h3>
-            <p>Application web dédiée à la gestion d'un centre commercial.</p>
-            <div class="flex flex-wrap gap-2 text-xs text-white/70">
-              <span class="tag">Web</span>
-              <span class="tag">Gestion</span>
-              <span class="tag">Académique</span>
-            </div>
-          </div>
-        </article>
-        <article class="project-card carousel-item" aria-hidden="true">
-          <div class="project-media alt">
-            <div class="project-badge">API</div>
-          </div>
-          <div class="space-y-3">
-            <h3>API REST sécurisée</h3>
-            <p>Développement d'une API REST sécurisée avec Node.js, Express.js et MongoDB.</p>
-            <div class="flex flex-wrap gap-2 text-xs text-white/70">
-              <span class="tag">Node.js</span>
-              <span class="tag">Express.js</span>
-              <span class="tag">MongoDB</span>
-            </div>
-          </div>
-        </article>
-        <article class="project-card carousel-item" aria-hidden="true">
-          <div class="project-media alt-2">
-            <div class="project-badge">Jeu 2D</div>
-          </div>
-          <div class="space-y-3">
-            <h3>Jeu 2D en local</h3>
-            <p>Jeu 2D développé en Java pour un usage local.</p>
-            <div class="flex flex-wrap gap-2 text-xs text-white/70">
-              <span class="tag">Java</span>
-              <span class="tag">Local</span>
-              <span class="tag">Personnel</span>
-            </div>
-          </div>
-        </article>
-        <article class="project-card carousel-item" aria-hidden="true">
-          <div class="project-media">
-            <div class="project-badge">Systèmes</div>
-          </div>
-          <div class="space-y-3">
-            <h3>Installation &amp; administration Windows &amp; Linux</h3>
-            <p>Mise en place et administration de systèmes Windows et Linux.</p>
-            <div class="flex flex-wrap gap-2 text-xs text-white/70">
-              <span class="tag">Windows</span>
-              <span class="tag">Linux</span>
-              <span class="tag">Systèmes</span>
-            </div>
+          <div
+            class="project-details-wrapper"
+            *ngIf="openIndex === i"
+            [attr.id]="'project-details-' + i"
+          >
+            <app-project-details
+              [images]="project.images"
+              [description]="project.details"
+            ></app-project-details>
           </div>
         </article>
       </div>

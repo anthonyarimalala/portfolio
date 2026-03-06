@@ -1,0 +1,8 @@
+<div class="project-details">
+  <p class="details-text" *ngIf="description">{{ description }}</p>
+  <div class="details-grid">
+    <figure class="details-item" *ngFor="let image of images">
+      <img [src]="image" alt="Aperçu du projet" loading="lazy" />
+    </figure>
+  </div>
+</div>
