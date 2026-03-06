@@ -1,0 +1,14 @@
+Installer l’outil de déploiement:
+	npm install angular-cli-ghpages --save-dev
+
+Build du projet:
+	ng build --base-href "https://anthonyarimalala.github.io/portfolio/"
+
+npx angular-cli-ghpages --dir=dist/nom-du-projet:
+	npx angular-cli-ghpages --dir=dist/portfolio/browser
+
+
+
+ng build --base-href "https://anthonyarimalala.github.io/portfolio/"
+npx angular-cli-ghpages --dir=dist/portfolio/browser
+
