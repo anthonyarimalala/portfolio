@@ -1,6 +1,7 @@
 ﻿import { AfterViewInit, Component, OnDestroy } from '@angular/core';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { ExperienceComponent } from './components/experience/experience.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HeroComponent } from './components/hero/hero.component';
@@ -13,6 +14,7 @@ import { SkillsComponent } from './components/skills/skills.component';
     HeaderComponent,
     HeroComponent,
     AboutComponent,
+    ExperienceComponent,
     SkillsComponent,
     ProjectsComponent,
     ContactComponent,
