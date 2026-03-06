@@ -11,7 +11,11 @@
           *ngFor="let project of displayedProjects; let i = index"
           [attr.aria-hidden]="project.isClone ? 'true' : null"
         >
-          <div class="project-media" [ngClass]="project.mediaClass">
+          <div
+            class="project-media"
+            [ngClass]="project.mediaClass"
+            [style.--project-image]="project.coverImage ? 'url(' + project.coverImage + ')' : null"
+          >
             <div class="project-badge">{{ project.badge }}</div>
           </div>
           <div class="space-y-3">

@@ -20,9 +20,10 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
       details: 'Suivi des boutiques, facturation, reporting des performances et supervision des accès.',
       badge: 'Web',
       mediaClass: '',
+      coverImage: 'https://via.placeholder.com/800x500.png?text=Centre+Commercial+Cover',
       tags: ['Web', 'Gestion', 'Académique'],
       images: [
-        'https://via.placeholder.com/400x250.png?text=Centre+Commercial+1',
+        'https://audreytips.com/wp-content/uploads/2018/09/24-sites-proposant-des-photos-de-haute-qualite-en-libre-de-droits-pour-un-usage-commercial.jpg',
         'https://via.placeholder.com/400x250.png?text=Centre+Commercial+2'
       ]
     },
@@ -32,6 +33,7 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
       details: 'Authentification JWT, validation des requêtes, gestion des rôles et documentation des endpoints.',
       badge: 'API',
       mediaClass: 'alt',
+      coverImage: 'https://via.placeholder.com/800x500.png?text=API+Cover',
       tags: ['Node.js', 'Express.js', 'MongoDB'],
       images: [
         'https://via.placeholder.com/400x250.png?text=API+1',
@@ -44,6 +46,7 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
       details: 'Moteur de collisions, gestion des niveaux et sauvegarde locale des scores.',
       badge: 'Jeu 2D',
       mediaClass: 'alt-2',
+      coverImage: 'https://via.placeholder.com/800x500.png?text=Jeu+2D+Cover',
       tags: ['Java', 'Local', 'Personnel'],
       images: [
         'https://via.placeholder.com/400x250.png?text=Jeu+2D+1',
@@ -56,6 +59,7 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
       details: 'Installation, sécurisation, scripts de maintenance et supervision des services.',
       badge: 'Systèmes',
       mediaClass: '',
+      coverImage: 'https://via.placeholder.com/800x500.png?text=Windows+Linux+Cover',
       tags: ['Windows', 'Linux', 'Systèmes'],
       images: [
         'https://via.placeholder.com/400x250.png?text=Windows+Linux+1',
