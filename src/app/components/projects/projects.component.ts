@@ -21,7 +21,10 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
       badge: 'Web',
       mediaClass: '',
       tags: ['Web', 'Gestion', 'Académique'],
-      images: ['/projects/centre-1.svg', '/projects/centre-2.svg']
+      images: [
+        'https://via.placeholder.com/400x250.png?text=Centre+Commercial+1',
+        'https://via.placeholder.com/400x250.png?text=Centre+Commercial+2'
+      ]
     },
     {
       title: 'API REST sécurisée',
@@ -30,7 +33,10 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
       badge: 'API',
       mediaClass: 'alt',
       tags: ['Node.js', 'Express.js', 'MongoDB'],
-      images: ['/projects/api-1.svg', '/projects/api-2.svg']
+      images: [
+        'https://via.placeholder.com/400x250.png?text=API+1',
+        'https://via.placeholder.com/400x250.png?text=API+2'
+      ]
     },
     {
       title: 'Jeu 2D en local',
@@ -39,7 +45,10 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
       badge: 'Jeu 2D',
       mediaClass: 'alt-2',
       tags: ['Java', 'Local', 'Personnel'],
-      images: ['/projects/game-1.svg', '/projects/game-2.svg']
+      images: [
+        'https://via.placeholder.com/400x250.png?text=Jeu+2D+1',
+        'https://via.placeholder.com/400x250.png?text=Jeu+2D+2'
+      ]
     },
     {
       title: 'Installation & administration Windows & Linux',
@@ -48,7 +57,10 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
       badge: 'Systèmes',
       mediaClass: '',
       tags: ['Windows', 'Linux', 'Systèmes'],
-      images: ['/projects/system-1.svg', '/projects/system-2.svg']
+      images: [
+        'https://via.placeholder.com/400x250.png?text=Windows+Linux+1',
+        'https://via.placeholder.com/400x250.png?text=Windows+Linux+2'
+      ]
     }
   ];
 
