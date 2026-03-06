@@ -284,14 +284,29 @@ body {
 }
 
 .avatar-ring {
+  position: relative;
   width: clamp(220px, 40vw, 360px);
   height: clamp(220px, 40vw, 360px);
   border-radius: 999px;
-  background: linear-gradient(135deg, rgba(255, 209, 102, 0.9), rgba(155, 93, 229, 0.9));
   display: grid;
   place-items: center;
   padding: 8px;
   box-shadow: 0 25px 60px rgba(10, 13, 20, 0.4);
+}
+
+.avatar-ring::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(255, 209, 102, 0.9), rgba(155, 93, 229, 0.9));
+  z-index: 0;
+  will-change: transform;
+}
+
+.is-visible .avatar-ring::before,
+.avatar-ring:hover::before {
+  animation: avatar-spin 6s linear infinite;
 }
 
 .avatar-inner {
@@ -304,6 +319,8 @@ body {
   font-size: 3rem;
   font-weight: 700;
   font-family: 'Space Grotesk', system-ui, sans-serif;
+  position: relative;
+  z-index: 1;
 }
 
 .avatar-photo {
@@ -311,6 +328,15 @@ body {
   height: 100%;
   border-radius: 999px;
   object-fit: cover;
+}
+
+@keyframes avatar-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .floating-card {
@@ -325,6 +351,70 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 20px 50px rgba(6, 8, 13, 0.45);
   text-align: center;
+}
+
+.about-more {
+  margin-top: 8px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 14px 16px;
+}
+
+.about-more__summary {
+  list-style: none;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.about-more__summary::-webkit-details-marker {
+  display: none;
+}
+
+.about-more__summary::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid rgba(255, 255, 255, 0.7);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.7);
+  transform: rotate(45deg);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.about-more:hover .about-more__summary::after {
+  border-color: rgba(255, 255, 255, 0.95);
+}
+
+.about-more[open] .about-more__summary::after {
+  transform: rotate(225deg);
+}
+
+.about-more__hint {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.about-more__content {
+  margin-top: 12px;
+  display: grid;
+  gap: 16px;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.about-more[open] .about-more__content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (min-width: 768px) {
+  .about-more__content {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 .experience-timeline {
