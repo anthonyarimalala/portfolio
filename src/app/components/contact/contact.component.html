@@ -1,0 +1,40 @@
+﻿<section id="contact" class="mx-auto w-full max-w-6xl px-6 pb-24 scroll-mt-24">
+  <div data-animate class="grid gap-10 md:grid-cols-[0.55fr_0.45fr]">
+    <div class="space-y-6">
+      <div>
+        <p class="section-kicker">Contact</p>
+        <h2 class="font-display text-3xl md:text-4xl">Discutons de votre prochain projet</h2>
+      </div>
+      <form #contactForm="ngForm" class="space-y-4" (ngSubmit)="onSubmit(contactForm)">
+        <div class="field">
+          <label for="name">Nom complet</label>
+          <input id="name" name="name" type="text" required [(ngModel)]="contact.name" placeholder="Votre nom" />
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required [(ngModel)]="contact.email" placeholder="vous@email.com" />
+        </div>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required [(ngModel)]="contact.message" placeholder="Parlons de votre idée..."></textarea>
+        </div>
+        <button class="btn-primary w-full" type="submit" [disabled]="contactForm.invalid">Envoyer</button>
+        <p *ngIf="submitted()" class="text-sm text-[#7ae582]">Merci ! Votre message a bien été envoyé.</p>
+      </form>
+    </div>
+    <div class="contact-card">
+      <h3 class="font-display text-2xl">Restons connectés</h3>
+      <p class="text-white/70">Disponible pour collaborations, stages et missions freelance.</p>
+      <div class="space-y-3 text-sm">
+        <a class="contact-link" href="mailto:contact@randriarimalala.dev">contact@randriarimalala.dev</a>
+        <a class="contact-link" href="https://www.linkedin.com/">LinkedIn</a>
+        <a class="contact-link" href="https://github.com/">GitHub</a>
+        <a class="contact-link" href="https://x.com/">Twitter / X</a>
+      </div>
+      <div class="mt-6 flex gap-3">
+        <span class="pill">Réponse sous 48h</span>
+        <span class="pill">Remote friendly</span>
+      </div>
+    </div>
+  </div>
+</section>
