@@ -430,6 +430,39 @@ body {
   border-color: rgba(255, 255, 255, 0.3);
 }
 
+.skills-content {
+  position: relative;
+  z-index: 1;
+}
+
+#skills {
+  position: relative;
+}
+
+#skills::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/technos/background.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.2;
+  filter: brightness(1.25) saturate(0.9);
+  pointer-events: none;
+  -webkit-mask-image:
+    radial-gradient(circle, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.85) 40%, rgba(0, 0, 0, 0) 75%),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 18%, rgba(0, 0, 0, 1) 82%, rgba(0, 0, 0, 0) 100%);
+  -webkit-mask-repeat: no-repeat, no-repeat;
+  -webkit-mask-size: 100% 100%, 100% 100%;
+  -webkit-mask-composite: source-in;
+  mask-image:
+    radial-gradient(circle, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.85) 40%, rgba(0, 0, 0, 0) 75%),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 18%, rgba(0, 0, 0, 1) 82%, rgba(0, 0, 0, 0) 100%);
+  mask-repeat: no-repeat, no-repeat;
+  mask-size: 100% 100%, 100% 100%;
+  mask-composite: intersect;
+}
+
 .skill-icon {
   width: 42px;
   height: 42px;
