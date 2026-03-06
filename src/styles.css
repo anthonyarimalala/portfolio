@@ -1,5 +1,5 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
   color-scheme: dark;
@@ -384,6 +384,15 @@ body {
   transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
+.about-more__summary:active {
+  transform: scale(0.985);
+  transition: transform 0.1s ease;
+}
+
+.about-more__summary:active::after {
+  transform: rotate(45deg) scale(0.9);
+}
+
 .about-more:hover .about-more__summary::after {
   border-color: rgba(255, 255, 255, 0.95);
 }
@@ -542,21 +551,42 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url('/technos/background.png');
+  /* background-image: url('/technos/background.png'); */
+  background-image: url('../public/technos/background.png');
   background-size: cover;
   background-position: center;
   opacity: 0.2;
   filter: brightness(1.25) saturate(0.9);
   pointer-events: none;
-  -webkit-mask-image:
-    radial-gradient(circle, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.85) 40%, rgba(0, 0, 0, 0) 75%),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 18%, rgba(0, 0, 0, 1) 82%, rgba(0, 0, 0, 0) 100%);
+  -webkit-mask-image: radial-gradient(
+      circle,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 0.85) 40%,
+      rgba(0, 0, 0, 0) 75%
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 1) 18%,
+      rgba(0, 0, 0, 1) 82%,
+      rgba(0, 0, 0, 0) 100%
+    );
   -webkit-mask-repeat: no-repeat, no-repeat;
   -webkit-mask-size: 100% 100%, 100% 100%;
   -webkit-mask-composite: source-in;
-  mask-image:
-    radial-gradient(circle, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.85) 40%, rgba(0, 0, 0, 0) 75%),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 18%, rgba(0, 0, 0, 1) 82%, rgba(0, 0, 0, 0) 100%);
+  mask-image: radial-gradient(
+      circle,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 0.85) 40%,
+      rgba(0, 0, 0, 0) 75%
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 1) 18%,
+      rgba(0, 0, 0, 1) 82%,
+      rgba(0, 0, 0, 0) 100%
+    );
   mask-repeat: no-repeat, no-repeat;
   mask-size: 100% 100%, 100% 100%;
   mask-composite: intersect;
@@ -593,7 +623,11 @@ body {
   border-radius: 18px;
   position: relative;
   overflow: hidden;
-  background-image: var(--project-image, none), var(--project-overlay, linear-gradient(135deg, rgba(255, 209, 102, 0.4), rgba(58, 134, 255, 0.3)));
+  background-image: var(--project-image, none),
+    var(
+      --project-overlay,
+      linear-gradient(135deg, rgba(255, 209, 102, 0.4), rgba(58, 134, 255, 0.3))
+    );
   background-size: cover, cover;
   background-position: center, center;
   background-repeat: no-repeat, no-repeat;
@@ -667,6 +701,13 @@ body {
   height: fit-content;
 }
 
+.contact-icons {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
 .contact-link {
   display: inline-flex;
   align-items: center;
@@ -676,6 +717,154 @@ body {
 }
 
 .contact-link:hover {
+  color: #fff;
+}
+
+.contact-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #ffd166;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease, color 0.3s ease;
+  box-shadow: 0 10px 25px rgba(7, 9, 15, 0.35);
+}
+
+.contact-label {
+  position: absolute;
+  bottom: -18px;
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.contact-icon::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 18px;
+  background: radial-gradient(circle, rgba(255, 209, 102, 0.45), rgba(155, 93, 229, 0.25), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+  filter: blur(6px);
+}
+
+.contact-icon:hover,
+.contact-icon:focus-visible {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 0 18px rgba(255, 209, 102, 0.35), 0 0 36px rgba(58, 134, 255, 0.25);
+}
+
+.contact-icon:hover::after,
+.contact-icon:focus-visible::after {
+  opacity: 1;
+}
+
+.contact-icon:hover .contact-label,
+.contact-icon:focus-visible .contact-label {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.icon-glyph {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+.icon-glyph--linkedin {
+  width: 20px;
+  height: 20px;
+}
+
+.contact-icon--linkedin {
+  color: #9b5de5;
+}
+
+.contact-help {
+  position: relative;
+}
+
+.contact-help > summary {
+  list-style: none;
+}
+
+.contact-help > summary::-webkit-details-marker {
+  display: none;
+}
+
+.contact-icon--help {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.icon-glyph--help {
+  display: grid;
+  place-items: center;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-weight: 700;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.contact-help__panel {
+  position: absolute;
+  top: calc(100% + 14px);
+  right: 0;
+  min-width: 240px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: rgba(8, 12, 20, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 20px 40px rgba(7, 9, 15, 0.5);
+  display: grid;
+  gap: 10px;
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 3;
+}
+
+.contact-help[open] .contact-help__panel {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.contact-help__item {
+  display: grid;
+  gap: 4px;
+}
+
+.contact-help__label {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.contact-help__value {
+  color: #ffd166;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.contact-help__value:hover {
   color: #fff;
 }
 
@@ -713,4 +902,3 @@ body {
     transform: none;
   }
 }
-
