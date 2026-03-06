@@ -1,6 +1,9 @@
 .carousel {
   position: relative;
   overflow: hidden;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
 }
 
 .carousel-track {
@@ -17,6 +20,10 @@
 
 .carousel-item {
   flex: 0 0 280px;
+}
+
+.carousel.is-dragging {
+  cursor: grabbing;
 }
 
 @keyframes projects-scroll {
