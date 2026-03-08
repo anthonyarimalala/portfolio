@@ -10,6 +10,7 @@
   display: flex;
   gap: 1.5rem;
   width: max-content;
+  align-items: flex-start;
   animation: projects-scroll 35s linear infinite;
   will-change: transform;
 }

@@ -100,9 +100,6 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
     if (event.button !== 0) {
       return;
     }
-    if (this.openIndex !== null) {
-      return;
-    }
     const target = event.target as HTMLElement | null;
     if (target?.closest('button, a, input, textarea, select, [data-no-drag]')) {
       return;
@@ -118,9 +115,6 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
 
   private readonly onPointerMove = (event: PointerEvent) => {
     if (!this.isDragging) {
-      return;
-    }
-    if (this.openIndex !== null) {
       return;
     }
     const delta = event.clientX - this.startX;
@@ -148,9 +142,6 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
 
   private readonly onWheel = (event: WheelEvent) => {
     if (event.deltaX === 0 && event.deltaY === 0) {
-      return;
-    }
-    if (this.openIndex !== null) {
       return;
     }
     this.pauseAutoScroll();
