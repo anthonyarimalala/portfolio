@@ -65,6 +65,19 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
         'https://via.placeholder.com/400x250.png?text=Windows+Linux+1',
         'https://via.placeholder.com/400x250.png?text=Windows+Linux+2'
       ]
+    },
+    {
+      title: 'Portfolio',
+      description: 'Création de mon portfolio pour présenter mes projets et compétences.',
+      details: 'Développement d’un portfolio moderne avec Angular, design responsive, section projets dynamique et formulaire de contact avec envoi d’email via EmailJS. Déploiement en ligne avec GitHub Pages.',
+      badge: 'Portfolio',
+      mediaClass: '',
+      coverImage: 'https://via.placeholder.com/800x500.png?text=Portfolio+Cover',
+      tags: ['Angular', 'Portfolio', 'Frontend', 'EmailJS'],
+      images: [
+        'https://via.placeholder.com/400x250.png?text=Portfolio+1',
+        'https://via.placeholder.com/400x250.png?text=Portfolio+2'
+      ]
     }
   ];
 

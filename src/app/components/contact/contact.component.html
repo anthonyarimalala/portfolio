@@ -5,23 +5,87 @@
         <p class="section-kicker">Contact</p>
         <h2 class="font-display text-3xl md:text-4xl">Discutons de votre prochain projet</h2>
       </div>
+
       <form #contactForm="ngForm" class="space-y-4" (ngSubmit)="onSubmit(contactForm)">
         <div class="field">
           <label for="name">Nom complet</label>
-          <input id="name" name="name" type="text" required [(ngModel)]="contact.name" placeholder="Votre nom" />
+          <input
+            id="name"
+            name="name"
+            type="text"
+            required
+            [(ngModel)]="contact.name"
+            placeholder="Votre nom"
+            [disabled]="loading()"
+          />
         </div>
+
         <div class="field">
           <label for="email">Email</label>
-          <input id="email" name="email" type="email" required [(ngModel)]="contact.email" placeholder="vous@email.com" />
+          <input
+            id="email"
+            name="email"
+            type="email"
+            required
+            [(ngModel)]="contact.email"
+            placeholder="vous@email.com"
+            [disabled]="loading()"
+          />
         </div>
+
+        <!-- Champ SUJET ajouté -->
+        <div class="field">
+          <label for="title">Sujet</label>
+          <input
+            id="title"
+            name="title"
+            type="text"
+            required
+            [(ngModel)]="contact.title"
+            placeholder="Sujet de votre message"
+            [disabled]="loading()"
+          />
+        </div>
+
         <div class="field">
           <label for="message">Message</label>
-          <textarea id="message" name="message" rows="5" required [(ngModel)]="contact.message" placeholder="Parlons de votre idée..."></textarea>
+          <textarea
+            id="message"
+            name="message"
+            rows="5"
+            required
+            [(ngModel)]="contact.message"
+            placeholder="Parlons de votre idée..."
+            [disabled]="loading()"
+          ></textarea>
         </div>
-        <button class="btn-primary w-full" type="submit" [disabled]="contactForm.invalid">Envoyer</button>
-        <p *ngIf="submitted()" class="text-sm text-[#7ae582]">Merci ! Votre message a bien été envoyé.</p>
+
+        <button
+          class="btn-primary btn-submit"
+          type="submit"
+          [disabled]="contactForm.invalid || loading()"
+        >
+          <span class="btn-submit__label" [class.btn-submit__label--hidden]="loading()">Envoyer</span>
+          <span *ngIf="loading()" class="btn-submit__loader" aria-hidden="true">
+            <svg class="btn-spinner" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle class="btn-spinner__track" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="btn-spinner__arc" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+          </span>
+        </button>
+
+        <!-- Message de succès -->
+        <div *ngIf="submitted()" class="form-feedback form-feedback--success" role="status" aria-live="polite">
+          ✓ Merci ! Votre message a bien été envoyé.
+        </div>
+
+        <!-- Message d'erreur -->
+        <div *ngIf="error()" class="form-feedback form-feedback--error" role="alert">
+          ⚠️ {{ error() }}
+        </div>
       </form>
     </div>
+
     <div class="contact-card">
       <h3 class="font-display text-2xl">Restons connectés</h3>
       <p class="text-white/70">Disponible à 100% pour un poste junior ou un stage.</p>
@@ -103,10 +167,6 @@
           </div>
         </details>
       </div>
-      <!-- <div class="mt-6 flex gap-3">
-        <span class="pill">Disponible à 100%</span>
-        <span class="pill">Master en cours</span>
-      </div> -->
     </div>
   </div>
 </section>
