@@ -1,0 +1,83 @@
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.fixed.inset-0 {
+  animation: fadeIn 0.2s ease-out;
+}
+
+.max-w-4xl, .max-w-7xl {
+  animation: scaleIn 0.2s ease-out;
+}
+
+/* Curseur */
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* Bouton fermer en X */
+button.text-4xl {
+  font-weight: 300;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s;
+}
+
+button.text-4xl:hover {
+  opacity: 0.8;
+}
+
+/* Scrollbar minimaliste */
+.overflow-y-auto::-webkit-scrollbar {
+  width: 4px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Style pour les images dans le modal photo */
+.max-w-full {
+  max-width: 100%;
+  max-height: 100%;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  border-radius: 4px;
+}
+
+/* Responsive pour le bouton fermer sur mobile */
+@media (max-width: 768px) {
+  .-top-12 {
+    top: -3rem;
+    right: 0;
+  }
+}
+
+/* Animation subtile pour l'image */
+img.object-contain {
+  transition: transform 0.3s ease;
+}
+
+img.object-contain:hover {
+  transform: scale(1.02);
+}

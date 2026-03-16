@@ -8,52 +8,170 @@
         fiables pour les équipes métiers.
       </p>
     </div>
+
     <div class="experience-timeline">
       <div class="experience-line"></div>
-      <article class="experience-item">
-        <div class="experience-dot"></div>
-        <div class="experience-card">
-          <div class="experience-header">
-            <div>
-              <p class="experience-role">Stagiaire en développement full-stack</p>
-              <p class="experience-company">HPI BUSINESS PARTNER</p>
+
+      @for (exp of experiences; track exp.id) {
+        <article class="experience-item">
+          <div class="experience-dot"></div>
+
+          <!-- Carte cliquable -->
+          <div class="experience-card cursor-pointer transition-transform hover:scale-[1.02] duration-300"
+               (click)="openExpModal(exp)">
+
+            <div class="experience-header">
+              <div>
+                <p class="experience-role">{{ exp.role }}</p>
+                <p class="experience-company">{{ exp.company }}</p>
+              </div>
+              <span class="experience-date">{{ exp.period }}</span>
             </div>
-            <span class="experience-date">Déc. 2024 – juil. 2025</span>
-          </div>
-          <p class="text-sm text-white/70">
-            Application web de back-office pour la gestion administrative et financière d'un cabinet dentaire avec un
-            focus RGPD, authentification sécurisée et UI responsive.
-          </p>
-          <div class="experience-tags">
-            <span class="chip">Laravel</span>
-            <span class="chip">MySQL</span>
-            <span class="chip">UI responsive</span>
-            <span class="chip">RGPD</span>
-          </div>
-        </div>
-      </article>
-      <article class="experience-item">
-        <div class="experience-dot"></div>
-        <div class="experience-card">
-          <div class="experience-header">
-            <div>
-              <p class="experience-role">Stagiaire en développement backend</p>
-              <p class="experience-company">be ys (anciennement EasyTech)</p>
+
+            <p class="text-sm text-white/70">
+              {{ exp.description }}
+            </p>
+
+            <div class="experience-tags">
+              @for (tag of exp.tags; track tag) {
+                <span class="chip">{{ tag }}</span>
+              }
             </div>
-            <span class="experience-date">Juil. 2024 – oct. 2024</span>
+
+            <div class="flex justify-end mt-4 text-white/40 text-xs">
+              <span class="flex items-center gap-1">
+                Cliquez pour voir plus
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </span>
+            </div>
           </div>
-          <p class="text-sm text-white/70">
-            Développement d'API REST en .NET pour optimiser la gestion des activités locales et améliorer la fiabilité
-            des intégrations métiers.
-          </p>
-          <div class="experience-tags">
-            <span class="chip">.NET</span>
-            <span class="chip">API REST</span>
-            <span class="chip">Swagger</span>
-            <span class="chip">Postman</span>
-          </div>
-        </div>
-      </article>
+        </article>
+      }
     </div>
   </div>
 </section>
+
+<!-- MODAL EXPÉRIENCE - SANS FOND -->
+@if (isExpModalOpen && selectedExp) {
+  <div class="fixed inset-0 z-50 flex items-center justify-center p-4" (click)="closeExpModal()">
+
+    <!-- Overlay simple, sans flou -->
+    <div class="absolute inset-0 bg-black/80"></div>
+
+    <!-- Contenu du modal -->
+    <div class="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto" (click)="$event.stopPropagation()">
+
+      <!-- Conteneur sans fond -->
+      <div class="text-white">
+
+        <!-- Titre seulement -->
+        <div class="mb-8">
+          <h3 class="text-4xl font-display font-bold mb-2">{{ selectedExp.role }}</h3>
+          <p class="text-2xl text-white/60">{{ selectedExp.company }} • {{ selectedExp.period }}</p>
+        </div>
+
+        <!-- Bouton fermer en X simple -->
+        <button
+          (click)="closeExpModal()"
+          class="absolute top-0 right-0 text-white/60 hover:text-white text-4xl leading-none">
+          ×
+        </button>
+
+        <!-- Contenu -->
+        <div class="space-y-8">
+
+          <!-- Description longue -->
+          <div>
+            <h4 class="text-lg font-semibold text-white/80 mb-3">À propos de cette mission</h4>
+            <p class="text-white/60 leading-relaxed">{{ selectedExp.longDescription }}</p>
+          </div>
+
+          <!-- Réalisations clés -->
+          <div>
+            <h4 class="text-lg font-semibold text-white/80 mb-3">Réalisations clés</h4>
+            <ul class="space-y-2">
+              @for (achievement of selectedExp.achievements; track achievement) {
+                <li class="flex items-start gap-3 text-white/60">
+                  <svg class="w-5 h-5 text-green-400/60 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>{{ achievement }}</span>
+                </li>
+              }
+            </ul>
+          </div>
+
+          <!-- Tags -->
+          <div>
+            <h4 class="text-lg font-semibold text-white/80 mb-3">Technologies utilisées</h4>
+            <div class="flex flex-wrap gap-2">
+              @for (tag of selectedExp.tags; track tag) {
+                <span class="px-3 py-1 bg-white/10 rounded-full text-sm text-white/80">
+                  {{ tag }}
+                </span>
+              }
+            </div>
+          </div>
+
+          <!-- Galerie photos cliquables -->
+          @if (selectedExp.photos.length > 0) {
+            <div>
+              <h4 class="text-lg font-semibold text-white/80 mb-4">Galerie</h4>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                @for (photo of selectedExp.photos; track photo.url) {
+                  <div class="group relative aspect-square rounded-xl overflow-hidden bg-white/5 cursor-pointer"
+                       (click)="openPhotoModal(photo, $event)">
+
+                    <img [src]="photo.url" [alt]="photo.caption"
+                         class="w-full h-full object-cover">
+
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                        <path d="M15 3h6v6M14 10L21 3M3 15h6v6M10 14L3 21"/>
+                      </svg>
+                    </div>
+
+                    <p class="absolute bottom-2 left-2 text-sm text-white bg-black/50 px-2 py-1 rounded">
+                      {{ photo.caption }}
+                    </p>
+                  </div>
+                }
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+}
+
+<!-- MODAL PHOTO - AVEC IMAGES REDIMENSIONNÉES -->
+@if (isPhotoModalOpen && selectedPhoto) {
+  <div class="fixed inset-0 z-[60] flex items-center justify-center p-4" (click)="closePhotoModal()">
+
+    <!-- Overlay plus sombre -->
+    <div class="absolute inset-0 bg-black/90"></div>
+
+    <!-- Conteneur principal qui occupe tout l'espace disponible -->
+    <div class="relative w-full h-full max-w-7xl max-h-[95vh] flex items-center justify-center" (click)="$event.stopPropagation()">
+
+      <!-- Bouton fermer en X simple - CORRIGÉ POUR MOBILE -->
+      <button
+        (click)="closePhotoModal()"
+        class="absolute top-4 right-4 md:top-0 md:-right-12 text-white/60 hover:text-white text-4xl leading-none z-10">
+        ×
+      </button>
+
+      <!-- Image avec object-contain pour préserver les proportions et fond transparent -->
+      <img [src]="selectedPhoto.url" [alt]="selectedPhoto.caption"
+           class="max-w-full max-h-full w-auto h-auto object-contain bg-transparent">
+
+      <!-- Légende -->
+      <p class="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/90 bg-black/60 backdrop-blur-sm px-6 py-2.5 rounded-full text-sm font-medium shadow-lg whitespace-nowrap">
+        {{ selectedPhoto.caption }}
+      </p>
+    </div>
+  </div>
+}
