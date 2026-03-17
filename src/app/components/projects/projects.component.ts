@@ -7,7 +7,7 @@ import { ProjectDetailsComponent } from '../project-details/project-details.comp
   standalone: true,
   imports: [CommonModule, ProjectDetailsComponent],
   templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.css']
+  styleUrls: ['./projects.component.css'],
 })
 export class ProjectsComponent implements AfterViewInit, OnDestroy {
   @ViewChild('carousel', { static: true }) carouselRef!: ElementRef<HTMLElement>;
@@ -17,41 +17,43 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
     {
       title: 'Application web de gestion de centre commercial',
       description: "Application web dédiée à la gestion d'un centre commercial.",
-      details: 'Suivi des boutiques, facturation, reporting des performances et supervision des accès.',
+      details:
+        'Suivi des boutiques, facturation, reporting des performances et supervision des accès.',
       badge: 'Web',
       mediaClass: '',
-      coverImage: 'https://via.placeholder.com/800x500.png?text=Centre+Commercial+Cover',
+      coverImage: 'projects/centre-commercial/dashboard.png',
       tags: ['Web', 'Gestion', 'Académique'],
       images: [
         'https://audreytips.com/wp-content/uploads/2018/09/24-sites-proposant-des-photos-de-haute-qualite-en-libre-de-droits-pour-un-usage-commercial.jpg',
-        'https://via.placeholder.com/400x250.png?text=Centre+Commercial+2'
-      ]
+        'https://via.placeholder.com/400x250.png?text=Centre+Commercial+2',
+      ],
     },
     {
       title: 'API REST sécurisée',
       description: "Développement d'une API REST sécurisée avec Node.js, Express.js et MongoDB.",
-      details: 'Authentification JWT, validation des requêtes, gestion des rôles et documentation des endpoints.',
+      details:
+        'Authentification JWT, validation des requêtes, gestion des rôles et documentation des endpoints.',
       badge: 'API',
       mediaClass: 'alt',
-      coverImage: 'https://via.placeholder.com/800x500.png?text=API+Cover',
+      coverImage: 'projects/api-rest/rest.png',
       tags: ['Node.js', 'Express.js', 'MongoDB'],
       images: [
         'https://via.placeholder.com/400x250.png?text=API+1',
-        'https://via.placeholder.com/400x250.png?text=API+2'
-      ]
+        'https://via.placeholder.com/400x250.png?text=API+2',
+      ],
     },
     {
-      title: 'Jeu 2D en local',
-      description: 'Jeu 2D développé en Java pour un usage local.',
-      details: 'Moteur de collisions, gestion des niveaux et sauvegarde locale des scores.',
-      badge: 'Jeu 2D',
+      title: 'Jeu simple en local',
+      description: 'Jeu développé en Java pour un usage en réseau local.',
+      details: ' sauvegarde locale des scores.',
+      badge: 'Jeu simple',
       mediaClass: 'alt-2',
-      coverImage: 'https://via.placeholder.com/800x500.png?text=Jeu+2D+Cover',
+      coverImage: 'projects/jeu/jeu.png',
       tags: ['Java', 'Local', 'Personnel'],
       images: [
         'https://via.placeholder.com/400x250.png?text=Jeu+2D+1',
-        'https://via.placeholder.com/400x250.png?text=Jeu+2D+2'
-      ]
+        'https://via.placeholder.com/400x250.png?text=Jeu+2D+2',
+      ],
     },
     {
       title: 'Installation & administration Windows & Linux',
@@ -59,31 +61,47 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
       details: 'Installation, sécurisation, scripts de maintenance et supervision des services.',
       badge: 'Systèmes',
       mediaClass: '',
-      coverImage: 'https://via.placeholder.com/800x500.png?text=Windows+Linux+Cover',
+      coverImage: 'projects/installation/Linux-more-secure-than-Windows-980x551.webp',
       tags: ['Windows', 'Linux', 'Systèmes'],
       images: [
         'https://via.placeholder.com/400x250.png?text=Windows+Linux+1',
-        'https://via.placeholder.com/400x250.png?text=Windows+Linux+2'
-      ]
+        'https://via.placeholder.com/400x250.png?text=Windows+Linux+2',
+      ],
     },
     {
       title: 'Portfolio',
       description: 'Création de mon portfolio pour présenter mes projets et compétences.',
-      details: 'Développement d’un portfolio moderne avec Angular, design responsive, section projets dynamique et formulaire de contact avec envoi d’email via EmailJS. Déploiement en ligne avec GitHub Pages.',
+      details:
+        'Développement d’un portfolio moderne avec Angular, design responsive, section projets dynamique et formulaire de contact avec envoi d’email via EmailJS. Déploiement en ligne avec GitHub Pages.',
       badge: 'Portfolio',
       mediaClass: '',
-      coverImage: 'https://via.placeholder.com/800x500.png?text=Portfolio+Cover',
+      coverImage: 'projects/portfolio/portflio.png',
       tags: ['Angular', 'Portfolio', 'Frontend', 'EmailJS'],
       images: [
         'https://via.placeholder.com/400x250.png?text=Portfolio+1',
-        'https://via.placeholder.com/400x250.png?text=Portfolio+2'
-      ]
-    }
+        'https://via.placeholder.com/400x250.png?text=Portfolio+2',
+      ],
+    },
+    {
+      title: 'Analyse de données et apprentissage automatique',
+      description:
+        'Projet d’analyse exploratoire et de modélisation prédictive sur un jeu de données réel.',
+      details:
+        'Nettoyage des données, analyses statistiques, visualisations avec Matplotlib/Seaborn, et implémentation de modèles de régression/classification avec Scikit-learn.',
+      badge: 'Data Science',
+      mediaClass: '',
+      coverImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTosPDeGar-IbRm8-g6olsnc8BYdJpWuMq7DQ&s',
+      tags: ['Python', 'Pandas', 'Scikit-learn', 'Data Science'],
+      images: [
+        'https://via.placeholder.com/400x250.png?text=Data+Science+1',
+        'https://via.placeholder.com/400x250.png?text=Data+Science+2',
+      ],
+    },
   ];
 
   readonly displayedProjects = [...this.projects, ...this.projects].map((project, index) => ({
     ...project,
-    isClone: index >= this.projects.length
+    isClone: index >= this.projects.length,
   }));
 
   openIndex: number | null = null;
@@ -150,8 +168,6 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
     event.preventDefault();
     this.scheduleAutoScrollResume();
   };
-
-
 
   ngAfterViewInit(): void {
     this.currentOffset = this.getCurrentOffset();
