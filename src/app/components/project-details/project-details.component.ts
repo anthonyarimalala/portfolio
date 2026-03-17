@@ -10,5 +10,5 @@ import { CommonModule } from '@angular/common';
 })
 export class ProjectDetailsComponent {
   @Input({ required: true }) images: string[] = [];
-  @Input() description = '';
+  @Input() details = '';
 }

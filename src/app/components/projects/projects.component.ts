@@ -16,16 +16,51 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
   readonly projects = [
     {
       title: 'Application web de gestion de centre commercial',
-      description: "Application web dédiée à la gestion d'un centre commercial.",
-      details:
-        'Suivi des boutiques, facturation, reporting des performances et supervision des accès.',
+      description: "Plateforme web complète permettant la gestion centralisée d’un centre commercial avec plusieurs profils utilisateurs.",
+
+      details: `
+    Application conçue pour digitaliser et optimiser la gestion d’un centre commercial à travers trois profils principaux : administrateur, gestionnaire et commerçant.
+
+    🔹 Gestion des boutiques :
+    - Enregistrement et suivi des boutiques (informations, emplacement, statut)
+    - Attribution des espaces commerciaux
+    - Historique des occupations
+
+    🔹 Gestion des utilisateurs et des rôles :
+    - Système d’authentification sécurisé
+    - Gestion des accès par profil (admin, gestionnaire, commerçant)
+    - Contrôle des permissions
+
+    🔹 Facturation et paiements :
+    - Génération automatique des loyers et charges
+    - Suivi des paiements (payé / en attente / retard)
+    - Historique des transactions
+    - Notifications de paiement
+
+    🔹 Tableau de bord & reporting :
+    - Statistiques globales du centre commercial
+    - Suivi des performances (revenus, taux d’occupation)
+    - Visualisation des données (graphiques, indicateurs clés)
+
+    🔹 Supervision et sécurité :
+    - Suivi des accès utilisateurs
+    - Journal d’activité (logs)
+    - Gestion des incidents
+
+    🔹 Expérience utilisateur :
+    - Interface moderne et intuitive
+    - Navigation adaptée à chaque profil
+    - Responsive (mobile & desktop)
+      `,
+
       badge: 'Web',
       mediaClass: '',
       coverImage: 'projects/centre-commercial/dashboard.png',
-      tags: ['Web', 'Gestion', 'Académique'],
+
+      tags: ['Web', 'Gestion', 'SaaS', 'Multi-profils', 'Académique'],
+
       images: [
-        'https://audreytips.com/wp-content/uploads/2018/09/24-sites-proposant-des-photos-de-haute-qualite-en-libre-de-droits-pour-un-usage-commercial.jpg',
-        'https://via.placeholder.com/400x250.png?text=Centre+Commercial+2',
+        
       ],
     },
     {

@@ -32,3 +32,8 @@
   display: block;
   object-fit: cover;
 }
+.details-text {
+  white-space: pre-line; /* Préserve les sauts de ligne */
+  line-height: 1.6; /* Améliore la lisibilité */
+  margin-bottom: 1.5rem;
+}
