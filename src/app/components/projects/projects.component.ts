@@ -20,33 +20,33 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
       details: `
     Application conçue pour digitaliser et optimiser la gestion d’un centre commercial à travers trois profils principaux : administrateur, gestionnaire et commerçant.
 
-    🔹 Gestion des boutiques :
+    °  Gestion des boutiques :
     - Enregistrement et suivi des boutiques (informations, emplacement, statut)
     - Attribution des espaces commerciaux
     - Historique des occupations
+    - Gestion de stock
 
-    🔹 Gestion des utilisateurs et des rôles :
+    °  Gestion des utilisateurs et des rôles :
     - Système d’authentification sécurisé
     - Gestion des accès par profil (admin, gestionnaire, commerçant)
     - Contrôle des permissions
 
-    🔹 Facturation et paiements :
+    °   Facturation et paiements :
     - Génération automatique des loyers et charges
     - Suivi des paiements (payé / en attente / retard)
     - Historique des transactions
     - Notifications de paiement
 
-    🔹 Tableau de bord & reporting :
+    °   Tableau de bord & reporting :
     - Statistiques globales du centre commercial
     - Suivi des performances (revenus, taux d’occupation)
     - Visualisation des données (graphiques, indicateurs clés)
 
-    🔹 Supervision et sécurité :
+    °   Supervision et sécurité :
     - Suivi des accès utilisateurs
     - Journal d’activité (logs)
-    - Gestion des incidents
 
-    🔹 Expérience utilisateur :
+    °   Expérience utilisateur :
     - Interface moderne et intuitive
     - Navigation adaptée à chaque profil
     - Responsive (mobile & desktop)
@@ -59,69 +59,97 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
     },
     {
       title: 'API REST sécurisée',
-      description: "Développement d'une API REST sécurisée avec Node.js, Express.js et MongoDB.",
+      description: "Développement d'une API REST sécurisée avec Spring boot, mais aussi avec Node.js, Express.js et MongoDB.",
       details: 'Authentification JWT, validation des requêtes, gestion des rôles et documentation des endpoints.',
       badge: 'API',
       mediaClass: 'alt',
       coverImage: 'projects/api-rest/rest.png',
-      tags: ['Node.js', 'Express.js', 'MongoDB'],
+      tags: ['Spring Boot','Node.js', 'Express.js', 'MongoDB'],
       images: [
-        'https://via.placeholder.com/400x250.png?text=API+1',
-        'https://via.placeholder.com/400x250.png?text=API+2',
       ],
     },
     {
-      title: 'Jeu simple en local',
-      description: 'Jeu développé en Java pour un usage en réseau local.',
-      details: ' sauvegarde locale des scores.',
-      badge: 'Jeu simple',
-      mediaClass: 'alt-2',
-      coverImage: 'projects/jeu/jeu.png',
-      tags: ['Java', 'Local', 'Personnel'],
-      images: [
-        'https://via.placeholder.com/400x250.png?text=Jeu+2D+1',
-        'https://via.placeholder.com/400x250.png?text=Jeu+2D+2',
-      ],
-    },
-    {
-      title: 'Installation & administration Windows & Linux',
-      description: 'Mise en place et administration de systèmes Windows et Linux.',
-      details: 'Installation, sécurisation, scripts de maintenance et supervision des services.',
-      badge: 'Systèmes',
+      title: 'Premiers pas en analyse de données & apprentissage automatique',
+      description: 'Découverte de l’analyse de données et des bases du machine learning avec Python.',
+
+      details: `
+    - Nettoyage simple de données avec Pandas
+    - Analyses exploratoires de base
+    - Visualisations avec Matplotlib / Seaborn
+    - Premiers modèles simples avec Scikit-learn
+      `,
+
+      badge: 'Data Science',
       mediaClass: '',
-      coverImage: 'projects/installation/Linux-more-secure-than-Windows-980x551.webp',
-      tags: ['Windows', 'Linux', 'Systèmes'],
+
+      coverImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTosPDeGar-IbRm8-g6olsnc8BYdJpWuMq7DQ&s',
+
+      tags: ['Python', 'Pandas', 'Machine Learning', 'Apprentissage'],
+
       images: [
-        'https://via.placeholder.com/400x250.png?text=Windows+Linux+1',
-        'https://via.placeholder.com/400x250.png?text=Windows+Linux+2',
+        'https://via.placeholder.com/400x250.png?text=Analyse+Donnees',
+        'https://via.placeholder.com/400x250.png?text=Visualisation',
       ],
     },
     {
       title: 'Portfolio',
-      description: 'Création de mon portfolio pour présenter mes projets et compétences.',
+      description: 'Création de ce portfolio',
       details: 'Développement d’un portfolio moderne avec Angular, design responsive, section projets dynamique et formulaire de contact avec envoi d’email via EmailJS. Déploiement en ligne avec GitHub Pages.',
       badge: 'Portfolio',
       mediaClass: '',
       coverImage: 'projects/portfolio/portflio.png',
       tags: ['Angular', 'Portfolio', 'Frontend', 'EmailJS'],
       images: [
-        'https://via.placeholder.com/400x250.png?text=Portfolio+1',
-        'https://via.placeholder.com/400x250.png?text=Portfolio+2',
       ],
     },
     {
-      title: 'Analyse de données et apprentissage automatique',
-      description: 'Projet d’analyse exploratoire et de modélisation prédictive sur un jeu de données réel.',
-      details: 'Nettoyage des données, analyses statistiques, visualisations avec Matplotlib/Seaborn, et implémentation de modèles de régression/classification avec Scikit-learn.',
-      badge: 'Data Science',
-      mediaClass: '',
-      coverImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTosPDeGar-IbRm8-g6olsnc8BYdJpWuMq7DQ&s',
-      tags: ['Python', 'Pandas', 'Scikit-learn', 'Data Science'],
+      title: 'Jeu du Morpion en réseau local',
+      description: "Jeu multijoueur en Java permettant à deux ordinateurs de s’affronter via sockets sur un même réseau.",
+
+      details: `
+    - Architecture client-serveur avec sockets Java
+    - Synchronisation des coups en temps réel
+    - Gestion des tours et détection de victoire
+    - Interface graphique simple (Swing / JavaFX)
+    - Sauvegarde locale des scores
+    (Projet vraiment ancien pour comprendre Java)
+      `,
+
+      badge: 'Jeu réseau',
+      mediaClass: 'alt-2',
+
+      coverImage: 'projects/jeu/jeu.png',
+
+      tags: ['Java', 'Socket', 'Réseau', 'Multijoueur'],
+
       images: [
-        'https://via.placeholder.com/400x250.png?text=Data+Science+1',
-        'https://via.placeholder.com/400x250.png?text=Data+Science+2',
+        'https://via.placeholder.com/400x250.png?text=Interface+Jeu',
+        'https://via.placeholder.com/400x250.png?text=Partie+En+Cours',
       ],
     },
+    {
+      title: 'Installation & administration Windows & Linux',
+      description: 'Tests et prise en main des systèmes Windows et Linux.',
+
+      details: `
+    - Installation de différents OS (Windows / Linux)
+    - Tests de fonctionnalités et configuration de base
+    - Découverte de l’administration système
+    - Premiers scripts simples pour automatisation
+      `,
+
+      badge: 'Systèmes',
+      mediaClass: '',
+
+      coverImage: 'projects/installation/Linux-more-secure-than-Windows-980x551.webp',
+
+      tags: ['Windows', 'Linux', 'Systèmes', 'Apprentissage'],
+
+      images: [
+      ],
+    },
+
+
   ];
 
   readonly displayedProjects = [...this.projects, ...this.projects].map((project, index) => ({
