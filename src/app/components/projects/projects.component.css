@@ -51,6 +51,31 @@
   margin-top: 0.5rem;
 }
 
+/* Style pour l'indicateur Shift+scroll */
+.scroll-hint {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+.carousel:hover + .scroll-hint,
+.scroll-hint:hover {
+  opacity: 1;
+}
+
+.shift-hint {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  background: rgba(15, 23, 42, 0.6);
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  backdrop-filter: blur(4px);
+  pointer-events: none; /* Pour ne pas interférer avec les clics */
+}
+
 @keyframes projects-scroll {
   from {
     transform: translateX(0);

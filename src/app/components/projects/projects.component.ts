@@ -17,7 +17,6 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
     {
       title: 'Application web de gestion de centre commercial',
       description: "Plateforme web complète permettant la gestion centralisée d’un centre commercial avec plusieurs profils utilisateurs.",
-
       details: `
     Application conçue pour digitaliser et optimiser la gestion d’un centre commercial à travers trois profils principaux : administrateur, gestionnaire et commerçant.
 
@@ -52,22 +51,16 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
     - Navigation adaptée à chaque profil
     - Responsive (mobile & desktop)
       `,
-
       badge: 'Web',
       mediaClass: '',
       coverImage: 'projects/centre-commercial/dashboard.png',
-
       tags: ['Web', 'Gestion', 'SaaS', 'Multi-profils', 'Académique'],
-
-      images: [
-        
-      ],
+      images: [],
     },
     {
       title: 'API REST sécurisée',
       description: "Développement d'une API REST sécurisée avec Node.js, Express.js et MongoDB.",
-      details:
-        'Authentification JWT, validation des requêtes, gestion des rôles et documentation des endpoints.',
+      details: 'Authentification JWT, validation des requêtes, gestion des rôles et documentation des endpoints.',
       badge: 'API',
       mediaClass: 'alt',
       coverImage: 'projects/api-rest/rest.png',
@@ -106,8 +99,7 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
     {
       title: 'Portfolio',
       description: 'Création de mon portfolio pour présenter mes projets et compétences.',
-      details:
-        'Développement d’un portfolio moderne avec Angular, design responsive, section projets dynamique et formulaire de contact avec envoi d’email via EmailJS. Déploiement en ligne avec GitHub Pages.',
+      details: 'Développement d’un portfolio moderne avec Angular, design responsive, section projets dynamique et formulaire de contact avec envoi d’email via EmailJS. Déploiement en ligne avec GitHub Pages.',
       badge: 'Portfolio',
       mediaClass: '',
       coverImage: 'projects/portfolio/portflio.png',
@@ -119,10 +111,8 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
     },
     {
       title: 'Analyse de données et apprentissage automatique',
-      description:
-        'Projet d’analyse exploratoire et de modélisation prédictive sur un jeu de données réel.',
-      details:
-        'Nettoyage des données, analyses statistiques, visualisations avec Matplotlib/Seaborn, et implémentation de modèles de régression/classification avec Scikit-learn.',
+      description: 'Projet d’analyse exploratoire et de modélisation prédictive sur un jeu de données réel.',
+      details: 'Nettoyage des données, analyses statistiques, visualisations avec Matplotlib/Seaborn, et implémentation de modèles de régression/classification avec Scikit-learn.',
       badge: 'Data Science',
       mediaClass: '',
       coverImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTosPDeGar-IbRm8-g6olsnc8BYdJpWuMq7DQ&s',
@@ -141,13 +131,14 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
 
   openIndex: number | null = null;
 
-  private isDragging = false;
+  isDragging = false;
   private startX = 0;
   private startOffset = 0;
   private currentOffset = 0;
   private resumeTimer: number | null = null;
 
   private readonly resumeDelayMs = 3500;
+  private readonly scrollSensitivity = 1.5; // Ajustez cette valeur pour changer la vitesse du scroll
 
   private readonly onPointerDown = (event: PointerEvent) => {
     if (event.button !== 0) {
@@ -194,13 +185,27 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
   };
 
   private readonly onWheel = (event: WheelEvent) => {
+    // Vérifier si la touche Shift est enfoncée
+    if (!event.shiftKey) {
+      return; // Ignorer le scroll si Shift n'est pas enfoncé (comportement normal)
+    }
+
+    // Empêcher le scroll vertical quand Shift est enfoncé
+    event.preventDefault();
+
     if (event.deltaX === 0 && event.deltaY === 0) {
       return;
     }
+
     this.pauseAutoScroll();
-    const delta = event.deltaX !== 0 ? event.deltaX : event.deltaY;
-    this.setOffset(this.currentOffset - delta);
-    event.preventDefault();
+
+    // Utiliser deltaY (scroll vertical) avec Shift pour le défilement horizontal
+    // Plus l'utilisateur scroll vite, plus le déplacement est important
+    const delta = event.deltaY !== 0 ? event.deltaY : event.deltaX;
+
+    // Appliquer le déplacement avec la sensibilité ajustable
+    this.setOffset(this.currentOffset - (delta * this.scrollSensitivity));
+
     this.scheduleAutoScrollResume();
   };
 
