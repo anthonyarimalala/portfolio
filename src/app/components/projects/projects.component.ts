@@ -16,7 +16,8 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
   readonly projects = [
     {
       title: 'Application web de gestion de centre commercial',
-      description: "Plateforme web complète permettant la gestion centralisée d’un centre commercial avec plusieurs profils utilisateurs.",
+      description:
+        'Plateforme web complète permettant la gestion centralisée d’un centre commercial avec plusieurs profils utilisateurs.',
       details: `
     Application conçue pour digitaliser et optimiser la gestion d’un centre commercial à travers trois profils principaux : administrateur, gestionnaire et commerçant.
 
@@ -54,23 +55,25 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
       badge: 'Web',
       mediaClass: '',
       coverImage: 'projects/centre-commercial/dashboard.png',
-      tags: ['Web', 'Gestion', 'SaaS', 'Multi-profils', 'Académique'],
+      tags: ['MEAN', 'Gestion', 'SaaS', 'Multi-profils', 'Académique'],
       images: [],
     },
     {
       title: 'API REST sécurisée',
-      description: "Développement d'une API REST sécurisée avec Spring boot, mais aussi avec Node.js, Express.js et MongoDB.",
-      details: 'Authentification JWT, validation des requêtes, gestion des rôles et documentation des endpoints.',
+      description:
+        "Développement d'une API REST sécurisée avec Spring boot, mais aussi avec Node.js, Express.js et MongoDB.",
+      details:
+        'Authentification JWT, validation des requêtes, gestion des rôles et documentation des endpoints.',
       badge: 'API',
       mediaClass: 'alt',
       coverImage: 'projects/api-rest/rest.png',
-      tags: ['Spring Boot','Node.js', 'Express.js', 'MongoDB'],
-      images: [
-      ],
+      tags: ['Spring Boot', 'Node.js', 'Express.js', 'MongoDB'],
+      images: [],
     },
     {
       title: 'Premiers pas en analyse de données & apprentissage automatique',
-      description: 'Découverte de l’analyse de données et des bases du machine learning avec Python.',
+      description:
+        'Découverte de l’analyse de données et des bases du machine learning avec Python.',
 
       details: `
     - Nettoyage simple de données avec Pandas
@@ -82,7 +85,8 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
       badge: 'Data Science',
       mediaClass: '',
 
-      coverImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTosPDeGar-IbRm8-g6olsnc8BYdJpWuMq7DQ&s',
+      coverImage:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTosPDeGar-IbRm8-g6olsnc8BYdJpWuMq7DQ&s',
 
       tags: ['Python', 'Pandas', 'Machine Learning', 'Apprentissage'],
 
@@ -94,17 +98,18 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
     {
       title: 'Portfolio',
       description: 'Création de ce portfolio',
-      details: 'Développement d’un portfolio moderne avec Angular, design responsive, section projets dynamique et formulaire de contact avec envoi d’email via EmailJS. Déploiement en ligne avec GitHub Pages.',
+      details:
+        'Développement d’un portfolio moderne avec Angular, design responsive, section projets dynamique et formulaire de contact avec envoi d’email via EmailJS. Déploiement en ligne avec GitHub Pages.',
       badge: 'Portfolio',
       mediaClass: '',
       coverImage: 'projects/portfolio/portflio.png',
       tags: ['Angular', 'Portfolio', 'Frontend', 'EmailJS'],
-      images: [
-      ],
+      images: [],
     },
     {
       title: 'Jeu du Morpion en réseau local',
-      description: "Jeu multijoueur en Java permettant à deux ordinateurs de s’affronter via sockets sur un même réseau.",
+      description:
+        'Jeu multijoueur en Java permettant à deux ordinateurs de s’affronter via sockets sur un même réseau.',
 
       details: `
     - Architecture client-serveur avec sockets Java
@@ -145,11 +150,8 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
 
       tags: ['Windows', 'Linux', 'Systèmes', 'Apprentissage'],
 
-      images: [
-      ],
+      images: [],
     },
-
-
   ];
 
   readonly displayedProjects = [...this.projects, ...this.projects].map((project, index) => ({
@@ -232,7 +234,7 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
     const delta = event.deltaY !== 0 ? event.deltaY : event.deltaX;
 
     // Appliquer le déplacement avec la sensibilité ajustable
-    this.setOffset(this.currentOffset - (delta * this.scrollSensitivity));
+    this.setOffset(this.currentOffset - delta * this.scrollSensitivity);
 
     this.scheduleAutoScrollResume();
   };
