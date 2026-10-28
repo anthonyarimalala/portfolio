@@ -1,0 +1,78 @@
+<article>
+  <div class="site">
+    <div class="fav" aria-hidden="true">{{ result().favicon }}</div>
+    <div>
+      <div class="name">{{ result().site }}</div>
+      <div class="crumb">{{ result().crumb }}</div>
+    </div>
+  </div>
+
+  <h3>
+    <button
+      type="button"
+      class="title"
+      [attr.aria-expanded]="expanded()"
+      [attr.aria-controls]="'details-' + result().id"
+      (click)="toggle()"
+    >
+      {{ result().title }}
+    </button>
+  </h3>
+
+  <p class="snippet">
+    @if (result().date) {
+      <span class="date">{{ result().date }} ·</span>
+    }
+    {{ result().snippet }}
+  </p>
+
+  <div class="tags">
+    @for (tag of result().tags; track tag) {
+      <span>{{ tag }}</span>
+    }
+  </div>
+
+  <button
+    type="button"
+    class="toggle"
+    [attr.aria-expanded]="expanded()"
+    [attr.aria-controls]="'details-' + result().id"
+    (click)="toggle()"
+  >
+    {{ expanded() ? 'Masquer les détails' : 'Voir les détails' }}
+  </button>
+
+  @if (expanded()) {
+    <div class="more" [id]="'details-' + result().id">
+      @for (block of result().details; track $index) {
+        @if (block.heading) {
+          <h4>{{ block.heading }}</h4>
+        }
+        @if (block.paragraph) {
+          <p>{{ block.paragraph }}</p>
+        }
+        @if (block.items; as items) {
+          <ul>
+            @for (item of items; track $index) {
+              <li>
+                @if (item.label) {
+                  <b>{{ item.label }} :</b>
+                }
+                @if (item.href) {
+                  <a
+                    [href]="item.href"
+                    [attr.target]="item.external ? '_blank' : null"
+                    [attr.rel]="item.external ? 'noopener' : null"
+                    >{{ item.text }}</a
+                  >
+                } @else {
+                  {{ item.text }}
+                }
+              </li>
+            }
+          </ul>
+        }
+      }
+    </div>
+  }
+</article>

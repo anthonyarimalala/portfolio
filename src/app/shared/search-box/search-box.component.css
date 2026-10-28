@@ -1,0 +1,65 @@
+:host {
+  display: block;
+}
+
+.box {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  height: 48px;
+  padding: 0 20px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 26px;
+  transition: box-shadow 0.15s;
+}
+
+.box:hover,
+.box:focus-within {
+  box-shadow: 0 1px 6px var(--shadow-strong);
+  border-color: transparent;
+}
+
+.icon {
+  flex: none;
+  fill: var(--muted);
+}
+
+input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--fg);
+  font-size: 16px;
+  cursor: default;
+  caret-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Version compacte (page de résultats) */
+.compact {
+  height: 46px;
+  gap: 12px;
+  box-shadow: 0 1px 6px var(--shadow);
+}
+
+.submit {
+  display: flex;
+  padding: 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.submit svg {
+  fill: var(--blue);
+}
+
+.submit:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 4px;
+  border-radius: 50%;
+}

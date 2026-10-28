@@ -1,0 +1,46 @@
+<section class="panel" aria-label="Profil">
+  <div class="cover">
+    @if (hasPhoto()) {
+      <img class="photo" [src]="profile.photo" [alt]="'Photo de ' + profile.name" />
+    } @else {
+      <div class="photo initials" aria-hidden="true">{{ profile.initials }}</div>
+    }
+  </div>
+
+  <div class="body">
+    <h2>{{ profile.name }}</h2>
+    <p class="role">{{ profile.role }}</p>
+    <p class="bio">{{ profile.bio }}</p>
+
+    <div class="actions">
+      @for (action of profile.actions; track action.label) {
+        <a
+          [href]="action.href"
+          [attr.target]="action.external ? '_blank' : null"
+          [attr.rel]="action.external ? 'noopener' : null"
+          >{{ action.label }}</a
+        >
+      }
+    </div>
+
+    @for (fact of profile.facts; track fact.label) {
+      <p class="fact">
+        <b>{{ fact.label }} :</b> {{ fact.value }}
+      </p>
+    }
+
+    <div class="section">
+      <h3>Centres d'intérêt</h3>
+      <p class="fact">{{ profile.interests }}</p>
+    </div>
+
+    <div class="section">
+      <h3>Profils</h3>
+      @for (link of profile.profiles; track link.href) {
+        <p class="fact">
+          <a [href]="link.href" target="_blank" rel="noopener">{{ link.label }}</a>
+        </p>
+      }
+    </div>
+  </div>
+</section>

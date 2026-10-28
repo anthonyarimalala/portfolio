@@ -1,11 +1,15 @@
-import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { ApplicationConfig } from '@angular/core';
+import { provideRouter, withHashLocation, withInMemoryScrolling } from '@angular/router';
 
 import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideBrowserGlobalErrorListeners(),
-    provideRouter(routes)
-  ]
+    // Le mode « hash » (#/resultats) fonctionne tel quel sur GitHub Pages, sans réécriture d'URL.
+    provideRouter(
+      routes,
+      withHashLocation(),
+      withInMemoryScrolling({ scrollPositionRestoration: 'top' }),
+    ),
+  ],
 };

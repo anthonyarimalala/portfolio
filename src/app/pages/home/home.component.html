@@ -1,0 +1,25 @@
+<header class="top">
+  <a routerLink="/resultats" [queryParams]="{ tab: 'projets' }">Projets</a>
+  <a routerLink="/resultats" [queryParams]="{ tab: 'contact' }">Contact</a>
+</header>
+
+<main>
+  <h1 class="logo" aria-label="Johary Anthony Randriarimalala">
+    <app-logo />
+    <small>Développeur Junior · Full-stack / Backend</small>
+  </h1>
+
+  <app-search-box [text]="typed()" (submitted)="search()" />
+
+  <div class="buttons">
+    <button type="button" [disabled]="!ready()" (click)="search()">Recherche</button>
+    <button type="button" [disabled]="!ready()" (click)="search()">J'ai de la chance</button>
+  </div>
+
+  <p class="hint">Appuie sur « Recherche » pour découvrir mon profil.</p>
+</main>
+
+<footer>
+  <span>Madagascar</span>
+  <span>{{ legalNotice }}</span>
+</footer>
