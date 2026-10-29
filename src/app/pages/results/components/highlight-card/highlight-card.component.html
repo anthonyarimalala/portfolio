@@ -1,0 +1,17 @@
+<article class="result">
+  <div class="main">
+    <div class="site">
+      <div class="fav" [style.color]="highlight().faviconColor">{{ highlight().favicon }}</div>
+      <div class="site-text">
+        <div class="name">{{ highlight().name }}</div>
+        <div class="meta">{{ highlight().meta }}</div>
+      </div>
+      <span class="dots" aria-hidden="true">⋮</span>
+    </div>
+
+    <button type="button" class="title" (click)="onTitleClick()">{{ highlight().title }}</button>
+    <div class="snippet">{{ highlight().snippet }}</div>
+  </div>
+
+  <img class="thumb" [src]="highlight().thumb" [alt]="highlight().thumbAlt" loading="lazy" />
+</article>

@@ -1,0 +1,59 @@
+:host {
+  display: block;
+}
+
+.wrap {
+  position: relative;
+}
+
+.track {
+  display: flex;
+  gap: 20px;
+  padding: 2px 2px 6px;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+}
+
+.track::-webkit-scrollbar {
+  display: none;
+}
+
+.nav {
+  position: absolute;
+  top: 104px;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  box-shadow: 0 1px 6px var(--shadow-strong);
+  cursor: pointer;
+  fill: var(--muted);
+}
+
+.nav:hover {
+  background: var(--hover);
+}
+
+.next {
+  right: -12px;
+}
+
+.prev {
+  left: -12px;
+}
+
+@media (max-width: 640px) {
+  .track {
+    margin: 0 calc(var(--pad) * -1);
+    padding: 2px var(--pad) 6px;
+  }
+
+  .nav {
+    display: none;
+  }
+}

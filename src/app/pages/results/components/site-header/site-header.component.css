@@ -1,0 +1,86 @@
+:host {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  padding: 20px clamp(16px, 2vw, 33px) 8px 50px;
+  background: var(--bg);
+}
+
+.logo {
+  flex: none;
+  width: 111px;
+  padding: 0;
+  font-family: 'Product Sans', Arial, sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  text-align: left;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+app-search-form {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 900px;
+}
+
+.header-right {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 14px;
+  margin-left: auto;
+  padding-left: 16px;
+}
+
+.ico {
+  fill: var(--muted);
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+
+@media (max-width: 1250px) {
+  .ico {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  :host {
+    flex-wrap: wrap;
+    row-gap: 12px;
+    padding: 14px 16px 8px;
+  }
+
+  .logo {
+    order: 1;
+    width: auto;
+    font-size: 26px;
+  }
+
+  .header-right {
+    order: 2;
+  }
+
+  app-search-form {
+    order: 3;
+    flex: 1 0 100%;
+    max-width: none;
+  }
+}
+
+@media (max-width: 360px) {
+  .logo {
+    font-size: 23px;
+  }
+}

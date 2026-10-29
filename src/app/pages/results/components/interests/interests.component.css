@@ -1,0 +1,41 @@
+:host {
+  display: block;
+}
+
+app-tag-list {
+  margin-bottom: 20px;
+}
+
+.photos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.photos img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  border-radius: 14px;
+}
+
+@media (max-width: 640px) {
+  .photos {
+    display: flex;
+    gap: 12px;
+    margin: 0 calc(var(--pad) * -1);
+    padding: 0 var(--pad) 8px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .photos::-webkit-scrollbar {
+    display: none;
+  }
+
+  .photos img {
+    flex: 0 0 62%;
+    scroll-snap-align: start;
+  }
+}

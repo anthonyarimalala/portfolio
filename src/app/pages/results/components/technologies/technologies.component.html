@@ -1,0 +1,7 @@
+<h3 class="block-title">Technologies</h3>
+
+<div class="icons">
+  @for (tech of technologies; track tech.name) {
+    <app-circle-link [label]="tech.name" [href]="tech.href" [logo]="tech.logo" [external]="true" />
+  }
+</div>

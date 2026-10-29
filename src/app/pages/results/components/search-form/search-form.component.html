@@ -1,0 +1,32 @@
+<form class="searchbar" role="search" (submit)="onSubmit($event)">
+  <button type="button" class="plus" aria-label="Ajouter">
+    <app-icon name="plus" />
+  </button>
+
+  <input
+    #field
+    type="text"
+    autocomplete="off"
+    aria-label="Rechercher"
+    [value]="query()"
+    (input)="onInput($event)"
+  />
+
+  <button type="button" class="clear" aria-label="Effacer" (click)="clear()">
+    <app-icon name="close" />
+  </button>
+
+  <span class="sep"></span>
+
+  <button type="button" class="accent" aria-label="Recherche vocale">
+    <app-icon name="microphone" />
+  </button>
+
+  <button type="button" class="accent camera" aria-label="Recherche par image">
+    <app-icon name="camera" />
+  </button>
+
+  <button type="submit" class="accent" aria-label="Rechercher">
+    <app-icon name="search" />
+  </button>
+</form>

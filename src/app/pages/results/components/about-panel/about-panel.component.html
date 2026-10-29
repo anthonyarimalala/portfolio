@@ -1,0 +1,24 @@
+<h2>À propos</h2>
+
+<p class="text">
+  {{ about.text }}
+  <a [href]="about.link.href">{{ about.link.label }}</a>
+</p>
+
+<div class="facts">
+  @for (fact of about.facts; track fact.label) {
+    <div class="row">
+      <span class="key">{{ fact.label }}</span>
+      <span>
+        @for (line of fact.lines; track $index) {
+          {{ line }}
+          @if (!$last) {
+            <br />
+          }
+        }
+      </span>
+    </div>
+  }
+</div>
+
+<button type="button" class="comments" (click)="onFeedback()">...</button>

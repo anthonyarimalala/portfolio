@@ -1,0 +1,74 @@
+:host {
+  display: block;
+}
+
+.tabs {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+  padding: 0 var(--pad) 0 calc(var(--cl) - 12px);
+  overflow-x: auto;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--line);
+  scrollbar-width: none;
+}
+
+.tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.tab {
+  flex: none;
+  padding: 14px 12px 12px;
+  font: inherit;
+  color: var(--muted);
+  background: none;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+}
+
+.tab:hover {
+  color: var(--fg);
+}
+
+.tab.active {
+  font-weight: bold;
+  color: var(--blue);
+  border-bottom-color: var(--blue);
+}
+
+.tab:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: -2px;
+}
+
+.contact-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.chev {
+  display: inline-block;
+  font-size: 12px;
+  line-height: 1;
+  transform-origin: center;
+  transition: transform 0.2s;
+}
+
+.contact-tab[aria-expanded='true'] .chev {
+  transform: rotate(180deg);
+}
+
+@media (max-width: 640px) {
+  .tab {
+    padding: 12px 10px 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chev {
+    transition: none;
+  }
+}

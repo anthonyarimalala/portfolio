@@ -1,12 +1,11 @@
 <header class="top">
-  <a routerLink="/resultats" [queryParams]="{ tab: 'projets' }">Projets</a>
-  <a routerLink="/resultats" [queryParams]="{ tab: 'contact' }">Contact</a>
+  <a routerLink="/resultats" fragment="projets">Projets</a>
+  <a routerLink="/resultats" fragment="contact">Contact</a>
 </header>
 
 <main>
-  <h1 class="logo" aria-label="Johary Anthony Randriarimalala">
+  <h1 class="logo" aria-label="Kookle — Johary Anthony Randriarimalala">
     <app-logo />
-    <small>Développeur Junior · Full-stack / Backend</small>
   </h1>
 
   <app-search-box [text]="typed()" (submitted)="search()" />
@@ -20,6 +19,6 @@
 </main>
 
 <footer>
-  <span>Madagascar</span>
+  <span>{{ country }}</span>
   <span>{{ legalNotice }}</span>
 </footer>

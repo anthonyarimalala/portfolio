@@ -1,223 +1,56 @@
 :host {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  display: block;
 }
 
-/* En-tête */
-.top {
-  display: flex;
-  align-items: center;
-  gap: 36px;
-  padding-top: 22px;
-  padding-bottom: 6px;
+main {
+  padding: 0 var(--cl) 60px;
 }
 
-.logo {
-  flex: none;
-  font-size: 30px;
-  font-weight: 700;
-  letter-spacing: -1px;
-  text-decoration: none;
+.cols {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 470px);
+  gap: clamp(30px, 5vw, 70px);
 }
 
-app-search-box {
-  flex: 1;
-  max-width: 720px;
-}
-
-/* Onglets */
-.tabbar {
-  margin-top: 8px;
-  border-bottom: 1px solid var(--line);
-}
-
-.tabs {
-  display: flex;
-  gap: 6px;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-
-.tabs::-webkit-scrollbar {
-  display: none;
-}
-
-.tabs button {
-  padding: 12px 16px 10px;
-  font-size: 14px;
-  color: var(--muted);
-  white-space: nowrap;
-  background: none;
-  border: 0;
-  border-bottom: 3px solid transparent;
-  cursor: pointer;
-}
-
-.tabs button:hover {
-  color: var(--fg);
-}
-
-.tabs button.on {
-  font-weight: bold;
-  color: var(--blue);
-  border-bottom-color: var(--blue);
-}
-
-.tabs button:focus-visible {
-  outline: 2px solid var(--blue);
-  outline-offset: -2px;
-}
-
-/* Mise en page principale : résultats à gauche, profil à droite */
-.wrap {
-  flex: 1;
-  display: flex;
-  align-items: flex-start;
-  gap: 72px;
-  padding-top: 18px;
-  padding-bottom: 48px;
-}
-
-.left {
-  flex: 1 1 0;
+.cols > *,
+.primary > * {
   min-width: 0;
-  max-width: 760px;
 }
 
-.right {
-  position: sticky;
-  top: 16px;
-  flex: none;
-  width: 400px;
-}
-
-.stats {
-  margin: 2px 0 22px;
-  font-size: 13px;
-  color: var(--muted);
-}
-
-/* Autres questions posées */
-.faq {
-  margin: 8px 0 32px;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-}
-
-.faq h2 {
-  margin: 0;
-  padding: 16px 18px 10px;
-  font-size: 18px;
-  font-weight: 400;
-}
-
-.faq details {
-  padding: 14px 18px;
-  border-top: 1px solid var(--line);
-}
-
-.faq summary {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  cursor: pointer;
-  list-style: none;
-}
-
-.faq summary::-webkit-details-marker {
-  display: none;
-}
-
-.faq summary::after {
-  content: '';
-  flex: none;
-  width: 7px;
-  height: 7px;
-  margin-top: -3px;
-  border-right: 2px solid var(--muted);
-  border-bottom: 2px solid var(--muted);
-  transform: rotate(45deg);
-  transition: transform 0.15s;
-}
-
-.faq details[open] summary::after {
-  margin-top: 3px;
-  transform: rotate(-135deg);
-}
-
-.faq p {
-  margin: 10px 0 0;
-  line-height: 1.6;
-  color: var(--muted);
-}
-
-/* Fin de page */
-.end {
-  padding: 8px 0 20px;
-  font-size: 13px;
-  color: var(--muted);
-  text-align: center;
-}
-
-.end-logo {
-  margin-bottom: 4px;
-  font-size: 32px;
-  font-weight: 700;
-  letter-spacing: -1px;
-}
-
-.end p {
-  margin: 0;
-}
-
-.link {
-  padding: 0;
-  font: inherit;
-  color: var(--link);
-  background: none;
+.sep {
+  margin: 30px 0 26px;
   border: 0;
-  cursor: pointer;
-}
-
-.link:hover {
-  text-decoration: underline;
-}
-
-footer {
-  padding: 16px 0;
-  font-size: 13px;
-  color: var(--muted);
-  background: var(--hover);
   border-top: 1px solid var(--line);
 }
 
-/* Tablette et mobile : le profil passe au-dessus des résultats */
-@media (max-width: 1100px) {
-  .top {
-    flex-wrap: wrap;
-    gap: 16px;
+@media (max-width: 1250px) {
+  .cols {
+    grid-template-columns: minmax(0, 1fr) 360px;
+  }
+}
+
+/* Une seule colonne : la photo, puis le panneau « À propos », puis le reste. */
+@media (max-width: 1000px) {
+  .cols {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
   }
 
-  app-search-box {
-    flex: 1 1 100%;
-    max-width: none;
+  .primary {
+    display: contents;
   }
 
-  .wrap {
-    flex-direction: column-reverse;
-    gap: 24px;
+  app-profile-photo {
+    order: -2;
   }
 
-  .left {
-    width: 100%;
-    max-width: none;
+  aside {
+    order: -1;
   }
+}
 
-  .right {
-    position: static;
-    width: 100%;
+@media (max-width: 640px) {
+  .sep {
+    margin: 22px 0 18px;
   }
 }

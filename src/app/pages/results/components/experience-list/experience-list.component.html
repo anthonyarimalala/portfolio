@@ -1,0 +1,27 @@
+<h2>Expériences professionnelles</h2>
+
+@for (experience of experiences; track experience.role) {
+  <details class="item">
+    <summary class="head">
+      <img class="logo" [src]="experience.logo" [alt]="experience.logoAlt" />
+      <div class="text">
+        <span class="role">{{ experience.role }}</span>
+        <small>{{ experience.summary }}</small>
+      </div>
+      <app-icon class="chevron" name="chevronDown" />
+    </summary>
+
+    <div class="panel">
+      <div class="snippet">
+        {{ experience.description }}
+        <br />
+        @for (highlight of experience.highlights; track highlight.label) {
+          <b>{{ highlight.label }} :</b> {{ highlight.text }}
+          @if (!$last) {
+            ·
+          }
+        }
+      </div>
+    </div>
+  </details>
+}

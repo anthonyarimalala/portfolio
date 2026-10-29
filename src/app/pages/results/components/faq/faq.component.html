@@ -1,0 +1,38 @@
+<h3 class="title">Autres questions</h3>
+
+<div class="faq" role="group" aria-label="Autres questions">
+  @for (item of faq; track item.question) {
+    <details class="item">
+      <summary>
+        <span class="question">{{ item.question }}</span>
+        <app-icon class="chevron" name="chevronDown" />
+      </summary>
+
+      <div class="answer">
+        @for (paragraph of item.answer; track $index) {
+          <p>
+            @for (line of paragraph; track $index) {
+              @for (segment of line; track $index) {
+                @if (segment.href) {
+                  <a
+                    [href]="segment.href"
+                    [attr.target]="segment.external ? '_blank' : null"
+                    [attr.rel]="segment.external ? 'noreferrer' : null"
+                    >{{ segment.text }}</a
+                  >
+                } @else if (segment.bold) {
+                  <b>{{ segment.text }}</b>
+                } @else {
+                  <ng-container>{{ segment.text }}</ng-container>
+                }
+              }
+              @if (!$last) {
+                <br />
+              }
+            }
+          </p>
+        }
+      </div>
+    </details>
+  }
+</div>

@@ -39,15 +39,6 @@ main {
   text-align: center;
 }
 
-.logo small {
-  display: block;
-  margin-top: 12px;
-  font-size: clamp(13px, 2.4vw, 17px);
-  font-weight: 400;
-  letter-spacing: 0;
-  color: var(--muted);
-}
-
 app-search-box {
   width: 100%;
   max-width: 584px;

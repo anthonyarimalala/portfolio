@@ -1,0 +1,9 @@
+<h3 class="section-title">Centres d’intérêt</h3>
+
+<app-tag-list [tags]="interests" />
+
+<div class="photos">
+  @for (photo of photos; track photo.src) {
+    <img [src]="photo.src" [alt]="photo.alt" loading="lazy" />
+  }
+</div>

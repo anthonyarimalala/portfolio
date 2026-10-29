@@ -1,0 +1,17 @@
+<a
+  class="link"
+  [href]="href()"
+  [attr.target]="external() ? '_blank' : null"
+  [attr.rel]="external() ? 'noreferrer' : null"
+>
+  <span class="circle">
+    @if (logo(); as logo) {
+      <img class="logo" [src]="logo" alt="" loading="lazy" />
+    } @else if (icon(); as icon) {
+      <app-icon class="glyph" [name]="icon" [style.fill]="iconColor()" />
+    }
+  </span>
+  <span class="label">{{ label() }}</span>
+</a>
+
+<ng-content select="[slot=action]" />

@@ -1,59 +1,30 @@
-<header class="container top">
-  <a class="logo" routerLink="/" aria-label="Accueil"><app-logo /></a>
-  <app-search-box [text]="query" [compact]="true" (submitted)="search()" />
-</header>
+<app-site-header />
+<app-tabs />
 
-<nav class="tabbar" aria-label="Catégories">
-  <div class="container">
-    <div class="tabs">
-      @for (tab of tabs; track tab.id) {
-        <button
-          type="button"
-          [class.on]="tab.id === currentTab()"
-          [attr.aria-current]="tab.id === currentTab() ? 'page' : null"
-          (click)="selectTab(tab.id)"
-        >
-          {{ tab.label }}
-        </button>
-      }
+<main>
+  <app-profile-title />
+
+  <div class="cols">
+    <div class="primary">
+      <app-profile-photo />
+
+      <hr class="sep" />
+
+      <app-experience-list />
+      <app-highlight-card [highlight]="intro" />
+      <app-faq />
+      <app-project-carousel id="projets" />
+      <app-highlight-card [highlight]="softSkillsHighlight" />
+      <app-soft-skills />
+      <app-interests />
     </div>
+
+    <aside>
+      <app-about-panel />
+      <app-technologies />
+      <app-contact-links id="contact" />
+    </aside>
   </div>
-</nav>
-
-<main class="container wrap">
-  <div class="left">
-    <p class="stats">{{ stats() }}</p>
-
-    @for (result of visibleResults(); track result.id) {
-      <app-result-card [result]="result" />
-    }
-
-    @if (currentTab() === 'tous') {
-      <section class="faq">
-        <h2>Autres questions posées</h2>
-        @for (item of faq; track item.question) {
-          <details>
-            <summary>{{ item.question }}</summary>
-            <p>{{ item.answer }}</p>
-          </details>
-        }
-      </section>
-    }
-
-    <div class="end">
-      <div class="end-logo"><app-logo text="Joooooohary" /></div>
-      <p>
-        Fin des résultats &nbsp;·&nbsp;
-        <button type="button" class="link" (click)="scrollToTop()">Retour en haut</button>
-      </p>
-    </div>
-  </div>
-
-  <aside class="right">
-    <app-profile-panel />
-  </aside>
 </main>
 
-<footer>
-  <div class="container">{{ legalNotice }}</div>
-</footer>
+<app-site-footer />

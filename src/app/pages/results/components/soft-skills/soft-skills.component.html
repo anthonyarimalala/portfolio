@@ -1,0 +1,10 @@
+<div class="list" role="group" aria-label="Compétences relationnelles">
+  @for (skill of skills; track skill.title) {
+    <article class="skill">
+      <div class="meta">{{ skill.meta }}</div>
+      <h4>{{ skill.title }}</h4>
+      <p>{{ skill.text }}</p>
+      <app-tag-list [tags]="skill.tags" />
+    </article>
+  }
+</div>

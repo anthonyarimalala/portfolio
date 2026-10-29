@@ -1,0 +1,31 @@
+<nav class="tabs" aria-label="Catégories de résultats">
+  <button
+    type="button"
+    class="tab"
+    [class.active]="!menuOpen()"
+    [attr.aria-current]="menuOpen() ? null : 'page'"
+    (click)="closeMenu()"
+  >
+    Tous
+  </button>
+
+  <button
+    #contactTab
+    type="button"
+    class="tab contact-tab"
+    [class.active]="menuOpen()"
+    aria-haspopup="menu"
+    [attr.aria-expanded]="menuOpen()"
+    (click)="toggleMenu()"
+  >
+    Contact <span class="chev" aria-hidden="true">▾</span>
+  </button>
+</nav>
+
+@if (menuOpen()) {
+  <app-contact-menu
+    [top]="menuPosition().top"
+    [left]="menuPosition().left"
+    (picked)="closeMenu()"
+  />
+}

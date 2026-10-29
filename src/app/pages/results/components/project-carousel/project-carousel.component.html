@@ -1,0 +1,28 @@
+<h3 class="section-title">Quelques projets que j’ai réalisés</h3>
+
+<div class="wrap">
+  <div
+    #track
+    class="track"
+    role="group"
+    aria-label="Quelques projets réalisés"
+    (scroll)="updateNavigation()"
+  >
+    @for (project of projects; track project.title; let i = $index) {
+      <app-project-card [project]="project" (selected)="openProject(i)" />
+    }
+  </div>
+
+  @if (canScrollPrevious()) {
+    <button type="button" class="nav prev" aria-label="Projets précédents" (click)="scroll(-1)">
+      <app-icon name="chevronLeft" />
+    </button>
+  }
+  @if (canScrollNext()) {
+    <button type="button" class="nav next" aria-label="Projets suivants" (click)="scroll(1)">
+      <app-icon name="chevronRight" />
+    </button>
+  }
+</div>
+
+<app-project-dialog />

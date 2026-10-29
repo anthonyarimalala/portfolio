@@ -1,0 +1,11 @@
+<button type="button" class="logo" [attr.aria-label]="brand" (click)="onLogoClick()">
+  <app-logo />
+</button>
+
+<app-search-form (searched)="onSearch($event)" />
+
+<div class="header-right">
+  <app-icon class="ico" name="share" />
+  <app-icon class="ico" name="apps" />
+  <img class="avatar" src="https://picsum.photos/seed/avatar-user/72/72" alt="Compte" />
+</div>

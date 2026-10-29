@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
 
-import { RESULTS_TITLE, SITE_TITLE } from './core/portfolio.data';
+import { HOME_TITLE, RESULTS_TITLE } from './core/data/site.data';
 
 export const routes: Routes = [
   {
     path: '',
-    title: SITE_TITLE,
+    title: HOME_TITLE,
     loadComponent: () => import('./pages/home/home.component').then((m) => m.HomeComponent),
   },
   {

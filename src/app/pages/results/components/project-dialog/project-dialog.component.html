@@ -1,0 +1,53 @@
+<dialog
+  #dialog
+  aria-labelledby="project-dialog-title"
+  (click)="onDialogClick($event)"
+  (keydown.arrowLeft)="previous()"
+  (keydown.arrowRight)="next()"
+>
+  <div #scroller class="scroll">
+    @if (project(); as project) {
+      <div class="image">
+        <img [src]="currentImage()" [alt]="project.title" />
+
+        @if (hasPrevious()) {
+          <button type="button" class="nav prev" aria-label="Image précédente" (click)="previous()">
+            <app-icon name="chevronLeft" />
+          </button>
+        }
+        @if (hasNext()) {
+          <button type="button" class="nav next" aria-label="Image suivante" (click)="next()">
+            <app-icon name="chevronRight" />
+          </button>
+        }
+        @if (hasMany()) {
+          <span class="count">{{ index() + 1 }} / {{ gallery().length }}</span>
+        }
+
+        <button type="button" class="close" aria-label="Fermer" (click)="close()">
+          <app-icon name="close" />
+        </button>
+      </div>
+
+      <div class="body">
+        <div class="category">{{ project.category }} · {{ project.meta }}</div>
+        <h3 id="project-dialog-title">{{ project.title }}</h3>
+        <app-project-source [project]="project" [wrap]="true" />
+
+        @for (block of project.description; track $index) {
+          @if (block.kind === 'paragraph') {
+            <p>{{ block.text }}</p>
+          } @else {
+            <ul>
+              @for (item of block.items; track $index) {
+                <li>{{ item }}</li>
+              }
+            </ul>
+          }
+        }
+
+        <app-tag-list [tags]="project.tags" />
+      </div>
+    }
+  </div>
+</dialog>

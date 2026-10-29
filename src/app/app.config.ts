@@ -9,7 +9,8 @@ export const appConfig: ApplicationConfig = {
     provideRouter(
       routes,
       withHashLocation(),
-      withInMemoryScrolling({ scrollPositionRestoration: 'top' }),
+      // « anchorScrolling » permet aux liens de l'accueil de viser une section (#projets, #contact).
+      withInMemoryScrolling({ scrollPositionRestoration: 'top', anchorScrolling: 'enabled' }),
     ),
   ],
 };

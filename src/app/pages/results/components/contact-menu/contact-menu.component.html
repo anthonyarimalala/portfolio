@@ -1,0 +1,23 @@
+<div class="head" role="presentation">Mes contacts</div>
+
+@for (entry of entries; track entry.label) {
+  <a
+    role="menuitem"
+    [href]="entry.href"
+    [attr.target]="entry.external ? '_blank' : null"
+    [attr.rel]="entry.external ? 'noreferrer' : null"
+    (click)="picked.emit()"
+  >
+    <span class="ico">
+      @if (entry.logo; as logo) {
+        <img [src]="logo" alt="" />
+      } @else if (entry.icon; as icon) {
+        <app-icon class="glyph" [name]="icon" [style.fill]="entry.iconColor" />
+      }
+    </span>
+    <span class="txt">
+      <b>{{ entry.label }}</b>
+      <small>{{ entry.detail }}</small>
+    </span>
+  </a>
+}

@@ -1,0 +1,25 @@
+<h3 class="block-title">Contact &amp; profils</h3>
+
+<div class="icons">
+  @for (contact of contacts; track contact.label) {
+    <app-circle-link
+      [label]="contact.label"
+      [href]="contact.href"
+      [external]="contact.external ?? false"
+      [logo]="contact.logo"
+      [icon]="contact.icon"
+      [iconColor]="contact.iconColor"
+    >
+      <button
+        slot="action"
+        type="button"
+        class="copy-btn"
+        [class.copied]="copied() === contact.label"
+        [attr.aria-label]="contact.copyLabel"
+        (click)="copy(contact)"
+      >
+        <app-icon [name]="copied() === contact.label ? 'check' : 'copy'" />
+      </button>
+    </app-circle-link>
+  }
+</div>

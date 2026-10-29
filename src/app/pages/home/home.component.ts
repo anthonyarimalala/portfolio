@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, inject, signal } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 
-import { LEGAL_NOTICE, SEARCH_QUERY } from '../../core/portfolio.data';
+import { COUNTRY, LEGAL_NOTICE, SEARCH_QUERY } from '../../core/data/site.data';
 import { LogoComponent } from '../../shared/logo/logo.component';
 import { SearchBoxComponent } from '../../shared/search-box/search-box.component';
 
@@ -17,6 +17,7 @@ export class HomeComponent {
   private readonly router = inject(Router);
   private readonly destroyRef = inject(DestroyRef);
 
+  protected readonly country = COUNTRY;
   protected readonly legalNotice = LEGAL_NOTICE;
   /** Texte actuellement affiché dans la barre (animation de frappe). */
   protected readonly typed = signal('');
@@ -31,7 +32,7 @@ export class HomeComponent {
     if (!this.ready()) {
       return;
     }
-    void this.router.navigate(['/resultats'], { queryParams: { q: SEARCH_QUERY } });
+    void this.router.navigate(['/resultats']);
   }
 
   private startTyping(): void {

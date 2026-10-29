@@ -1,0 +1,99 @@
+:host {
+  display: block;
+  margin-top: 28px;
+  padding-top: 26px;
+  border-top: 1px solid var(--line);
+}
+
+.icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px clamp(14px, 3vw, 30px);
+}
+
+app-circle-link {
+  width: 90px;
+}
+
+/* Le bouton est placé en haut à droite du pictogramme rond. */
+.copy-btn {
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  margin-left: 9px;
+  padding: 0;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(32, 33, 36, 0.18);
+  cursor: pointer;
+  opacity: 0.9;
+  transition:
+    background 0.15s,
+    transform 0.1s,
+    border-color 0.15s,
+    opacity 0.15s;
+}
+
+.copy-btn app-icon {
+  --icon-size: 12px;
+  fill: var(--muted);
+}
+
+.copy-btn:hover {
+  background: var(--card);
+  border-color: #c5c8cc;
+  opacity: 1;
+}
+
+.copy-btn:active {
+  transform: scale(0.9);
+}
+
+.copy-btn:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 1px;
+}
+
+.copy-btn.copied {
+  background: #e6f4ea;
+  border-color: #34a853;
+  opacity: 1;
+}
+
+.copy-btn.copied app-icon {
+  fill: #34a853;
+}
+
+@media (max-width: 640px) {
+  .icons {
+    gap: 18px 12px;
+    justify-content: space-between;
+  }
+
+  app-circle-link {
+    width: 30%;
+    max-width: 90px;
+  }
+
+  .copy-btn {
+    top: -8px;
+    width: 24px;
+    height: 24px;
+  }
+
+  .copy-btn app-icon {
+    --icon-size: 13px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .copy-btn {
+    transition: none;
+  }
+}

@@ -16,12 +16,12 @@
 
 .box:hover,
 .box:focus-within {
-  box-shadow: 0 1px 6px var(--shadow-strong);
   border-color: transparent;
+  box-shadow: 0 1px 6px var(--shadow-strong);
 }
 
 .icon {
-  flex: none;
+  --icon-size: 20px;
   fill: var(--muted);
 }
 
@@ -37,29 +37,4 @@ input {
   caret-color: transparent;
   user-select: none;
   -webkit-user-select: none;
-}
-
-/* Version compacte (page de résultats) */
-.compact {
-  height: 46px;
-  gap: 12px;
-  box-shadow: 0 1px 6px var(--shadow);
-}
-
-.submit {
-  display: flex;
-  padding: 0;
-  background: none;
-  border: 0;
-  cursor: pointer;
-}
-
-.submit svg {
-  fill: var(--blue);
-}
-
-.submit:focus-visible {
-  outline: 2px solid var(--blue);
-  outline-offset: 4px;
-  border-radius: 50%;
 }

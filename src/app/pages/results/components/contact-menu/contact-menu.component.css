@@ -1,0 +1,103 @@
+:host {
+  position: fixed;
+  z-index: 40;
+  display: block;
+  min-width: min(300px, calc(100vw - 24px));
+  max-width: calc(100vw - 24px);
+  padding: 8px;
+  overflow: hidden;
+  background: var(--surface);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px var(--shadow-strong);
+  animation: appear 0.15s ease;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.head {
+  padding: 8px 12px 6px;
+  font-size: 12px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  padding: 10px 12px;
+  font-size: 14px;
+  color: var(--fg);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+a:hover {
+  background: var(--card);
+}
+
+.ico {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  background: var(--card);
+  border-radius: 50%;
+}
+
+a:hover .ico {
+  background: var(--bg);
+}
+
+.ico img {
+  display: block;
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.glyph {
+  --icon-size: 18px;
+}
+
+.txt {
+  flex: 1;
+  min-width: 0;
+}
+
+b,
+small {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+b {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--fg);
+}
+
+small {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :host {
+    animation: none;
+  }
+}

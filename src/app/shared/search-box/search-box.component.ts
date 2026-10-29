@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 
+import { IconComponent } from '../icon/icon.component';
+
 /**
  * Barre de recherche en lecture seule : le texte affiché est fourni par le parent
  * et ne peut jamais être modifié par le visiteur (clavier, collage, glisser-déposer).
@@ -7,6 +9,7 @@ import { ChangeDetectionStrategy, Component, input, output } from '@angular/core
 @Component({
   selector: 'app-search-box',
   standalone: true,
+  imports: [IconComponent],
   templateUrl: './search-box.component.html',
   styleUrl: './search-box.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -14,9 +17,7 @@ import { ChangeDetectionStrategy, Component, input, output } from '@angular/core
 export class SearchBoxComponent {
   /** Texte affiché dans la barre. */
   readonly text = input.required<string>();
-  /** Version compacte de la page de résultats : loupe cliquable à droite. */
-  readonly compact = input(false);
-  /** Émis quand le visiteur lance la recherche (Entrée ou clic sur la loupe). */
+  /** Émis quand le visiteur lance la recherche (touche Entrée). */
   readonly submitted = output<void>();
 
   protected onKeydown(event: KeyboardEvent): void {

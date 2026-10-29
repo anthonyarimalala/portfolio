@@ -1,0 +1,10 @@
+<div class="image">
+  <img [src]="project().gallery[0]" alt="" loading="lazy" />
+  <span class="pill">{{ project().category }}</span>
+</div>
+
+<div class="title">{{ project().title }}</div>
+
+<app-project-source [project]="project()">
+  <span class="dots" aria-hidden="true">⋮</span>
+</app-project-source>

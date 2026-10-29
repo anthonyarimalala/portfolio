@@ -1,0 +1,72 @@
+:host {
+  display: block;
+  flex: 0 0 185px;
+  width: 185px;
+  cursor: pointer;
+  outline: 0;
+  scroll-snap-align: start;
+}
+
+.image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: var(--card);
+  border-radius: 20px;
+}
+
+.image img {
+  width: 100%;
+  height: 100%;
+}
+
+.pill {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  padding: 7px 11px;
+  font-size: 13px;
+  line-height: 1;
+  color: #fff;
+  background: rgba(32, 33, 36, 0.72);
+  border-radius: 14px;
+}
+
+.title {
+  display: -webkit-box;
+  margin-top: 12px;
+  overflow: hidden;
+  font-size: 16px;
+  line-height: 1.4;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+app-project-source {
+  margin-top: 10px;
+}
+
+.dots {
+  flex: none;
+  margin-left: auto;
+  font-size: 18px;
+  color: var(--muted);
+}
+
+:host(:hover) .title,
+:host(:focus-visible) .title {
+  text-decoration: underline;
+}
+
+:host(:focus-visible) .image {
+  box-shadow: 0 0 0 3px var(--blue);
+}
+
+@media (max-width: 640px) {
+  :host {
+    flex-basis: 62%;
+    width: 62%;
+    max-width: 230px;
+  }
+}
